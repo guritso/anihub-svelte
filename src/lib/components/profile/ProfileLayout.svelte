@@ -1,34 +1,17 @@
 <script>
-    import SocialButtons from "./SocialButtons.svelte";
+    import Buttons from "./Buttons.svelte";
 
-    let config = $state({
-        data: {
-            user: {
-                name: "",
-                bio: "",
-            },
-        },
-    });
-
-    $effect(async () => {
-        try {
-            const res = await fetch("/api/config");
-            const data = await res.json();
-            config = data;
-        } catch (error) {
-            console.error("Error fetching config:", error);
-        }
-    });
+    let { config } = $props();
 </script>
 
 <div class="profile-layout">
-    <img src={config.data.user.avatar || "/mine.webp"} alt="" class="profile-picture" />
+    <img src={config.user.avatar || "/mine.webp"} alt="" class="profile-picture" />
     <div class="profile-info">
         <div class="info-container">
-            <h1 class="profile-name">{config.data.user.name}</h1>
-            <p class="profile-bio">{config.data.user.bio}</p>
+            <h1 class="profile-name">{config.user.name}</h1>
+            <p class="profile-bio">{config.user.bio}</p>
         </div>
-        <SocialButtons />
+        <Buttons social={config.social} />
     </div>
 </div>
 
