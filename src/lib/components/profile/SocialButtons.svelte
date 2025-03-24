@@ -45,7 +45,6 @@
         overflow-x: auto;
         overflow-y: hidden;
         scrollbar-width: none;
-        padding: 0.5rem;
         -webkit-overflow-scrolling: touch;
     }
 
