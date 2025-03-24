@@ -1,26 +1,30 @@
 <script>
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import '@fontsource/genjyuu-gothic/200.css';
 
-    onMount(async () => {
-        console.log('layout');
-    });
+	onMount(async () => {
+		console.log("mounted");
+	});
 </script>
 
-<main>
-	<slot />
-</main>
+<slot />
 
 <style>
-	:global(body) {
-		background-color: #22212c;
-		color: #e6e6e6;
+	:global(html) {
 		margin: 0;
 		padding: 0;
-		box-sizing: border-box;
-		align-items: center;
-		justify-content: center;
+	}
+
+    :global(body) {
+        background-color: #181a1b;
+		color: #e1dfdbcf;
+		font-family: 'Genjyuu Gothic', sans-serif;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
 		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
