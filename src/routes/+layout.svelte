@@ -1,10 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
 	import '@fontsource-variable/m-plus-1-code';
-
-	onMount(async () => {
-		console.log("mounted");
-	});
 </script>
 
 <slot />
@@ -27,5 +22,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+
+	:global(a) {
+		text-decoration: none;
+		color: #e1dfdbcf;
 	}
 </style>
