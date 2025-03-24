@@ -25,7 +25,7 @@ export async function GET({ url }) {
                 url: "https://myanimelist.net/profile/Guritso",
             },
         ],
-        animes: {
+        anime: {
             filter: ["watching", "completed"],
             rowSpeed: 0.6
         },

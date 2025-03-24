@@ -20,6 +20,7 @@ function reduceJson(json) {
             airing: anime.anime_airing_status === 1,
             mediaType: anime.anime_media_type_string,
             imageUrl: getImageUrl(anime.anime_image_path),
+            url: `https://myanimelist.net/anime/${anime.anime_id}`,
             user: {
                 status: getStatus(anime.status),
                 score: anime.score,
