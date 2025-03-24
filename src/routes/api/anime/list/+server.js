@@ -52,5 +52,6 @@ function getImageUrl(url) {
 }
 
 function getDate(date) {
-    return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const dateObj = new Date(date * 1000);
+    return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
