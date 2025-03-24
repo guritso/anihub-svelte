@@ -1,13 +1,14 @@
 import { json } from '@sveltejs/kit';
 
-export async function GET() {
+export async function GET({ url }) {
+    const user = url.searchParams.get('user');
+
     try {
-        const response = await fetch('https://myanimelist.net/animelist/guritso/load.json?offset=0&order=5&status=7');
+        const response = await fetch(`https://myanimelist.net/animelist/${user}/load.json?offset=0&order=5&status=7`);
         const data = await response.json();
 
         return json(reduceJson(data));
     } catch (error) {
-        console.error(error);
         return json({ error: 'Failed to fetch anime list' }, { status: 500 });
     }
 }

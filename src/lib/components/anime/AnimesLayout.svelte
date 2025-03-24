@@ -5,7 +5,9 @@
     let animes = $state([]);
 
     $effect(async () => {
-        const res = await fetch("/api/anime/list");
+        if (!config.user.myAnimeList?.length) return;
+
+        const res = await fetch(`/api/anime/list?user=${config.user.myAnimeList}`);
         const data = await res.json();
 
         const filter = config.anime.filter;
@@ -14,7 +16,6 @@
         animes = [...animes, ...animes];
     });
 </script>
-
 <div class="animes-layout">
     <div class="animes-container">
         {#each animes as anime}
@@ -28,7 +29,7 @@
         border: 1px solid #3a3f41;
         border-radius: 1rem;
         padding: 1rem;
-        height: 240px;
+        min-height: 240px;
         overflow: hidden;
     }
     
