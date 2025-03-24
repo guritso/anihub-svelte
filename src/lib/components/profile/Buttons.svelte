@@ -1,16 +1,8 @@
 <script>
+    let { social } = $props();
     let container;
-    let config = $state({
-        data: {
-            social: []
-        }
-    });
 
     $effect(async () => {
-        const res = await fetch("/api/config");
-        const data = await res.json();
-        config = data;
-
         container = document.querySelector('.social-button-container');
         container.addEventListener("wheel", function (event) {
             event.preventDefault();
@@ -22,9 +14,9 @@
 
 <div class="social-buttons">
     <div class="social-button-container">
-        {#each config.data.social as social}
-            <a href={social.url} target="_blank">
-                <p>{social.name}</p>
+        {#each social as button}
+            <a href={button.url} target="_blank">
+                <p>{button.name}</p>
             </a>
         {/each}
     </div>
@@ -53,14 +45,14 @@
     }
 
     a {
+        color: #e1dfdbcf;
         text-decoration: none;
-        color: #fff;
         font-size: 1.2rem;
-        font-weight: 400;
+        font-weight: 350;
         border: 1px solid #3a3f41;
         border-radius: 0.5rem;
-        padding: 0.5rem;
-        min-width: 2rem;
+        padding: 0.4rem;
+        min-width: 1.7rem;
         text-align: center;
         white-space: nowrap;
         flex-shrink: 0;
@@ -75,7 +67,7 @@
     a:active {
         background-color: #121414;
         border-color: #2f3536;
-        transform: scale(0.95);
+        transform: scale(0.97);
         transition: transform 0.1s ease-in-out;
     }
 
