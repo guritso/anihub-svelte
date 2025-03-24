@@ -1,9 +1,31 @@
 <script>
     import ProfileLayout from '$lib/components/profile/ProfileLayout.svelte';
+    import AnimesLayout from '$lib/components/anime/AnimesLayout.svelte';
+
+    let config = $state({
+        data: {
+            user: {
+                name: "",
+                bio: "",
+            },
+            social: [],
+            anime: {
+                filter: [],
+            },
+            repos:{}
+        },
+    });
+
+    $effect(async () => {
+        const res = await fetch("/api/config");
+        const data = await res.json();
+        config = data;
+    });
 </script>
 
 <div class="main-layout">
-    <ProfileLayout/>
+    <ProfileLayout config={config.data} />
+    <AnimesLayout config={config.data} />
 </div>
 
 <style>
@@ -11,10 +33,9 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        width: 1090px;
+        width: 1152px;
         height: 100vh;
         padding: 1rem;
-        border: 1px solid #3a3f41;
         box-sizing: border-box;
     }
 
