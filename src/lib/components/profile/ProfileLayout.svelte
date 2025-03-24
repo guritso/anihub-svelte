@@ -1,13 +1,32 @@
 <script>
-    import SocialButtons from './SocialButtons.svelte';
+    import SocialButtons from "./SocialButtons.svelte";
+
+    let config = $state({
+        data: {
+            user: {
+                name: "",
+                bio: "",
+            },
+        },
+    });
+
+    $effect(async () => {
+        try {
+            const res = await fetch("/api/config");
+            const data = await res.json();
+            config = data;
+        } catch (error) {
+            console.error("Error fetching config:", error);
+        }
+    });
 </script>
 
 <div class="profile-layout">
-    <img src="/profile.jpg" alt="Profile" class="profile-picture" />
+    <img src={config.data.user.avatar || "/mine.webp"} alt="" class="profile-picture" />
     <div class="profile-info">
         <div class="info-container">
-            <h1 class="profile-name">ゴリツォ</h1>
-            <p class="profile-bio">私はアニメとプログラミングが好きです。暇な時にはゲームをします。</p>
+            <h1 class="profile-name">{config.data.user.name}</h1>
+            <p class="profile-bio">{config.data.user.bio}</p>
         </div>
         <SocialButtons />
     </div>
@@ -15,6 +34,8 @@
 
 <style>
     .profile-layout {
+        background-size: cover;
+        background-position: center;
         display: flex;
         flex-direction: row;
         border: 1px solid #3a3f41;
@@ -28,7 +49,7 @@
     .profile-picture {
         width: 150px;
         height: 150px;
-        border-radius: 1.5rem;
+        border-radius: 1rem;
         object-fit: cover;
         object-position: center;
     }
@@ -46,19 +67,17 @@
     }
 
     .profile-name {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    .profile-bio {
-        font-size: 1.2rem;
-        line-height: 1.5;
-    }
-
-    h1, p {
+        font-size: 1.9rem;
+        font-weight: 500;
         margin: 0;
     }
 
+    .profile-bio {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        font-weight: 300;
+        margin: 0;
+    }
     @media (max-width: 600px) {
         .profile-layout {
             flex-direction: column;

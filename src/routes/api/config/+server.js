@@ -10,6 +10,11 @@ export async function GET({ url }) {
         },
         social: [
             {
+                name: "X",
+                username: "guritso",
+                url: "https://x.com/guritso",
+            },
+            {
                 name: "Github",
                 username: "Guritso",
                 url: "https://github.com/Guritso",

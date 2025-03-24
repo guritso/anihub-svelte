@@ -1,29 +1,32 @@
 <script>
-    import { onMount } from "svelte";
-
     let container;
+    let config = $state({
+        data: {
+            social: []
+        }
+    });
 
-    onMount(() => {
+    $effect(async () => {
+        const res = await fetch("/api/config");
+        const data = await res.json();
+        config = data;
+
         container = document.querySelector('.social-button-container');
-
         container.addEventListener("wheel", function (event) {
             event.preventDefault();
-            this.scrollLeft += event.deltaY;
+            container.scrollLeft += event.deltaY;
         });
     });
+
 </script>
 
 <div class="social-buttons">
     <div class="social-button-container">
-        <a href="https://x.com/guritso">
-            <p>X</p>
-        </a>
-        <a href="https://github.com/guritso">
-            <p>GitHub</p>
-        </a>
-        <a href="https://myanimelist.net/profile/guritso">
-            <p>MyAnimeList</p>
-        </a>
+        {#each config.data.social as social}
+            <a href={social.url} target="_blank">
+                <p>{social.name}</p>
+            </a>
+        {/each}
     </div>
 </div>
 
@@ -54,7 +57,7 @@
         text-decoration: none;
         color: #fff;
         font-size: 1.2rem;
-        font-weight: bold;
+        font-weight: 400;
         border: 1px solid #3a3f41;
         border-radius: 0.5rem;
         padding: 0.5rem;
@@ -66,11 +69,13 @@
     }
 
     a:hover {
-        background-color: #3a3f41;
+        background-color: #222425;
+        border-color: #60686b;
     }
-
+    
     a:active {
-        background-color: #2a2f31;
+        background-color: #121414;
+        border-color: #2f3536;
         transform: scale(0.95);
         transition: transform 0.1s ease-in-out;
     }
