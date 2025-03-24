@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import '@fontsource/genjyuu-gothic/200.css';
+	import '@fontsource-variable/m-plus-1-code';
 
 	onMount(async () => {
 		console.log("mounted");
@@ -18,7 +18,8 @@
     :global(body) {
         background-color: #181a1b;
 		color: #e1dfdbcf;
-		font-family: 'Genjyuu Gothic', sans-serif;
+		font-family: 'M PLUS 1 Code Variable', sans-serif;
+		font-optical-sizing: auto;
 		margin: 0;
 		padding: 0;
 		width: 100%;
