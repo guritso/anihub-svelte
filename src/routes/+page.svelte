@@ -1,12 +1,16 @@
 <script>
     import ProfileLayout from '$lib/components/profile/ProfileLayout.svelte';
     import AnimesLayout from '$lib/components/anime/AnimesLayout.svelte';
+    import ReposLayout from '$lib/components/repos/ReposLayout.svelte';
 
     let config = $state({
         data: {
             user: {
                 name: "",
                 bio: "",
+                avatar: "",
+                myAnimeList: "",
+                github: "",
             },
             social: [],
             anime: {
@@ -26,6 +30,7 @@
 <div class="main-layout">
     <ProfileLayout config={config.data} />
     <AnimesLayout config={config.data} />
+    <ReposLayout config={config.data} />
 </div>
 
 <style>
