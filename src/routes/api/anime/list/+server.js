@@ -3,6 +3,10 @@ import { json } from '@sveltejs/kit';
 export async function GET({ url }) {
     const user = url.searchParams.get('user');
 
+    if (!user) {
+        return json({ error: 'Missing user parameter' }, { status: 400 });
+    }
+
     try {
         const response = await fetch(`https://myanimelist.net/animelist/${user}/load.json?offset=0&order=5&status=7`);
         const data = await response.json();
@@ -50,7 +54,9 @@ function getStatus(status) {
 }
 
 function getImageUrl(url) {
-    return url.replace('/r/192x272/', '/').replace('.jpg', '.webp').split('?')[0];
+    return url
+        ? url.replace('/r/192x272/', '/').replace('.jpg', '.webp').split('?')[0]
+        : 'https://placehold.co/192x272?text=No%20image';
 }
 
 function getDate(date) {
