@@ -1,5 +1,5 @@
 <script>
-	import '@fontsource-variable/m-plus-1-code';
+	import "@fontsource-variable/m-plus-1-code";
 </script>
 
 <slot />
@@ -10,10 +10,10 @@
 		padding: 0;
 	}
 
-    :global(body) {
-        background-color: #181a1b;
+	:global(body) {
+		background-color: #181a1b;
 		color: #e1dfdbcf;
-		font-family: 'M PLUS 1 Code Variable', sans-serif;
+		font-family: "M PLUS 1 Code Variable", sans-serif;
 		font-optical-sizing: auto;
 		margin: 0;
 		padding: 0;

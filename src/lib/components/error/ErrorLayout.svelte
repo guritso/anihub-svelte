@@ -26,6 +26,4 @@
         font-size: 1rem;
         font-weight: 400;
     }
-    
-    
 </style>

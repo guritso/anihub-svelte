@@ -7,12 +7,16 @@
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
 
-        const res = await fetch(`/api/anime/list?user=${config.user.myAnimeList}`);
+        const res = await fetch(
+            `/api/anime/list?user=${config.user.myAnimeList}`,
+        );
         const data = await res.json();
 
         const filter = config.anime.filter;
 
-        animes = data.filter((card) => filter.includes(card.user.status)).slice(0, 30);
+        animes = data
+            .filter((card) => filter.includes(card.user.status))
+            .slice(0, 30);
         animes = [...animes, ...animes];
     });
 </script>
@@ -20,7 +24,7 @@
 <div class="animes-layout">
     <div class="animes-container">
         {#each animes as anime}
-            <Card anime={anime} />
+            <Card {anime} />
         {/each}
     </div>
 </div>

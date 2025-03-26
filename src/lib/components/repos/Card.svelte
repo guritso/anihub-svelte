@@ -3,7 +3,10 @@
 
     function formatDate(dateString) {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+        return date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+        });
     }
 </script>
 
@@ -11,12 +14,20 @@
     <div class="repo-card-info">
         <div>
             <p class="repo-card-title">{repo.name}</p>
-            <p class="repo-card-description">{repo.description || 'No description available.'}</p>
-            <p class="repo-card-info-item">Language: <span>{repo.language || 'Unknown'}</span></p>
+            <p class="repo-card-description">
+                {repo.description || "No description available."}
+            </p>
+            <p class="repo-card-info-item">
+                Language: <span>{repo.language || "Unknown"}</span>
+            </p>
         </div>
         <div class="repo-card-bottom">
-            <p class="repo-card-info-item">&#9733; <span>{repo.stargazers_count || 0}</span></p>
-            <p class="repo-card-info-item-updated">{formatDate(repo.updated_at)}</p>
+            <p class="repo-card-info-item">
+                &#9733; <span>{repo.stargazers_count || 0}</span>
+            </p>
+            <p class="repo-card-info-item-updated">
+                {formatDate(repo.updated_at)}
+            </p>
         </div>
     </div>
 </a>

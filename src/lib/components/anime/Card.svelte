@@ -8,10 +8,20 @@
     </div>
     <div class="anime-card-info">
         <div>
-        <a href={anime.url} target="_blank" class="anime-card-title">{anime.name}</a>
-        <p class="anime-card-info-item">Episodes: <span>{anime.user.episodes}/{anime.episodes}</span></p>
-        <p class="anime-card-info-item">Status: <span>{anime.user.status}</span></p>
-        <p class="anime-card-info-item">Scored: <span>{anime.user.score ? anime.user.score : 'N/A'}</span></p>
+            <a href={anime.url} target="_blank" class="anime-card-title"
+                >{anime.name}</a
+            >
+            <p class="anime-card-info-item">
+                Episodes: <span>{anime.user.episodes}/{anime.episodes}</span>
+            </p>
+            <p class="anime-card-info-item">
+                Status: <span>{anime.user.status}</span>
+            </p>
+            <p class="anime-card-info-item">
+                Scored: <span
+                    >{anime.user.score ? anime.user.score : "N/A"}</span
+                >
+            </p>
         </div>
         <div>
             <p class="anime-card-info-item-updated">{anime.user.updated}</p>
@@ -79,7 +89,7 @@
         font-weight: 400;
     }
 
-    .anime-card-title:hover  {
+    .anime-card-title:hover {
         text-decoration: underline;
         cursor: pointer;
     }

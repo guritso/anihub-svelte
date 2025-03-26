@@ -3,13 +3,12 @@
     let container;
 
     $effect(async () => {
-        container = document.querySelector('.social-button-container');
+        container = document.querySelector(".social-button-container");
         container.addEventListener("wheel", function (event) {
             event.preventDefault();
             container.scrollLeft += event.deltaY;
         });
     });
-
 </script>
 
 <div class="social-buttons">
@@ -63,7 +62,7 @@
         background-color: #222425;
         border-color: #60686b;
     }
-    
+
     a:active {
         background-color: #121414;
         border-color: #2f3536;
@@ -84,6 +83,5 @@
             flex-direction: row;
             width: 100%;
         }
-        
     }
 </style>

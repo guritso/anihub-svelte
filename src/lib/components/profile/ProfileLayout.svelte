@@ -5,7 +5,11 @@
 </script>
 
 <div class="profile-layout">
-    <img src={config.user.avatar || "/mine.webp"} alt="" class="profile-picture" />
+    <img
+        src={config.user.avatar || "/mine.webp"}
+        alt=""
+        class="profile-picture"
+    />
     <div class="profile-info">
         <div class="info-container">
             <h1 class="profile-name">{config.user.name}</h1>
@@ -24,7 +28,7 @@
         border: 1px solid #3a3f41;
         border-radius: 1.5rem;
         padding: 1rem;
-        gap: 1rem;  
+        gap: 1rem;
         width: 100%;
         box-sizing: border-box;
     }
@@ -77,12 +81,11 @@
         .info-container {
             align-items: center;
             margin-bottom: 1rem;
-        } 
+        }
 
         .profile-bio {
             text-align: center;
             font-size: 1.3rem;
         }
-
     }
 </style>
