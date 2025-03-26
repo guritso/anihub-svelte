@@ -24,7 +24,7 @@
         border: 1px solid #3a3f41;
         border-radius: 1.5rem;
         padding: 1rem;
-        gap: 1rem;
+        gap: 1rem;  
         width: 100%;
         box-sizing: border-box;
     }
@@ -61,10 +61,28 @@
         font-weight: 300;
         margin: 0;
     }
+
     @media (max-width: 600px) {
         .profile-layout {
             flex-direction: column;
             align-items: center;
+            border: none;
         }
+
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+        }
+
+        .info-container {
+            align-items: center;
+            margin-bottom: 1rem;
+        } 
+
+        .profile-bio {
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
     }
 </style>

@@ -50,4 +50,10 @@
     .repos-container::-webkit-scrollbar {
         width: none;
     }
+
+    @media (max-width: 600px) {
+        .repos-layout {
+            border: none;
+        }
+    }
 </style>

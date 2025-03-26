@@ -59,4 +59,10 @@
             transform: translateX(-50%);
         }
     }
+
+    @media (max-width: 600px) {
+        .animes-layout {
+            border: none;
+        }
+    }
 </style>

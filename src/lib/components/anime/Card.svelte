@@ -87,4 +87,26 @@
     p {
         margin: 0;
     }
+
+    @media (max-width: 600px) {
+        .anime-card {
+            flex-direction: column;
+            height: 300px;
+        }
+
+        .anime-card-image {
+            width: 100%;
+            height: 190px;
+        }
+
+        .anime-card-image img {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        .anime-card-title {
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+        }
+    }
 </style>
