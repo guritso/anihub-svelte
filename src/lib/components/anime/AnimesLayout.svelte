@@ -3,7 +3,7 @@
 
     let { config } = $props();
     let animes = $state([]);
-    let loadingText = $state("loading...");
+    let status = $state("loading...");
 
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
@@ -14,7 +14,7 @@
         const data = await res.json();
 
         if (data.error) {
-            loadingText = data.error;
+            status = data.error;
             return;
         }
 
@@ -30,7 +30,7 @@
 <div class="animes-layout">
     {#if animes.length === 0}
         <div class="animes-loading">
-            <p>{loadingText}</p>
+            <p>{status}</p>
         </div>
     {:else}
         <div class="animes-container">
