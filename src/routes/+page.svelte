@@ -53,4 +53,12 @@
             width: 100%;
         }
     }
+
+    @media (max-width: 600px) {
+        .main-layout {
+            padding: 0;
+            height: 100%;
+            gap: 0;
+        }
+    }
 </style>

@@ -74,4 +74,16 @@
     p {
         margin: 0;
     }
+
+    @media (max-width: 600px) {
+        .social-button-container {
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            width: 100%;
+        }
+        
+    }
 </style>
