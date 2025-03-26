@@ -48,7 +48,7 @@
         box-sizing: border-box;
     }
 
-    @media (max-width: 1090px) {
+    @media (max-width: 1152px) {
         .main-layout {
             width: 100%;
         }
