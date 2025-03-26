@@ -3,6 +3,7 @@
 
     let { config } = $props();
     let animes = $state([]);
+    let loadingText = $state("loading...");
 
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
@@ -11,6 +12,11 @@
             `/api/anime/list?user=${config.user.myAnimeList}`,
         );
         const data = await res.json();
+
+        if (data.error) {
+            loadingText = data.error;
+            return;
+        }
 
         const filter = config.anime.filter;
 
@@ -22,11 +28,17 @@
 </script>
 
 <div class="animes-layout">
-    <div class="animes-container">
-        {#each animes as anime}
-            <Card {anime} />
-        {/each}
-    </div>
+    {#if animes.length === 0}
+        <div class="animes-loading">
+            <p>{loadingText}</p>
+        </div>
+    {:else}
+        <div class="animes-container">
+            {#each animes as anime}
+                <Card {anime} />
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -53,6 +65,16 @@
 
     .animes-container:hover {
         animation-play-state: paused;
+    }
+
+    .animes-loading {
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     @keyframes scroll {
