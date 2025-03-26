@@ -37,6 +37,8 @@
 
     .repo-card:active {
         transform: scale(0.995);
+        border-color: #2f3536;
+        background-color: #121414;
     }
 
     .repo-card-info {
