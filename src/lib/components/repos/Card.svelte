@@ -31,7 +31,8 @@
     }
 
     .repo-card:hover {
-        transform: scale(1.005);
+        border-color: #60686b;
+        background-color: #222425;
     }
 
     .repo-card:active {
@@ -90,11 +91,6 @@
 
     .repo-card-info-item span {
         font-weight: 400;
-    }
-
-    .repo-card-title:hover {
-        text-decoration: underline;
-        cursor: pointer;
     }
 
     p {
