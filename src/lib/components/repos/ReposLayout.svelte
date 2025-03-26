@@ -7,7 +7,7 @@
     $effect(async () => {
         const { excludeStatus } = config.repos;
 
-        if (!config.user.github?.length) return;
+        if (!config.user?.github) return;
 
         const data = await fetch(`https://api.github.com/users/${config.user.github}/repos?sort=updated`);
 

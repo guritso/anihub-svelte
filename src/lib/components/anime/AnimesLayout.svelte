@@ -5,7 +5,7 @@
     let animes = $state([]);
 
     $effect(async () => {
-        if (!config.user.myAnimeList?.length) return;
+        if (!config.user?.myAnimeList) return;
 
         const res = await fetch(`/api/anime/list?user=${config.user.myAnimeList}`);
         const data = await res.json();
@@ -16,6 +16,7 @@
         animes = [...animes, ...animes];
     });
 </script>
+
 <div class="animes-layout">
     <div class="animes-container">
         {#each animes as anime}
@@ -32,7 +33,7 @@
         min-height: 240px;
         overflow: hidden;
     }
-    
+
     .animes-container {
         display: flex;
         flex-direction: row;

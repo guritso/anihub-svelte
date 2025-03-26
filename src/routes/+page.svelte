@@ -1,36 +1,40 @@
 <script>
-    import ProfileLayout from '$lib/components/profile/ProfileLayout.svelte';
-    import AnimesLayout from '$lib/components/anime/AnimesLayout.svelte';
-    import ReposLayout from '$lib/components/repos/ReposLayout.svelte';
+    import ProfileLayout from "$lib/components/profile/ProfileLayout.svelte";
+    import AnimesLayout from "$lib/components/anime/AnimesLayout.svelte";
+    import ReposLayout from "$lib/components/repos/ReposLayout.svelte";
+    import ErrorLayout from "$lib/components/error/ErrorLayout.svelte";
+
+    import { getConfig } from "$lib/config";
+    import { goto } from "$app/navigation";
 
     let config = $state({
-        data: {
-            user: {
-                name: "",
-                bio: "",
-                avatar: "",
-                myAnimeList: "",
-                github: "",
-            },
-            social: [],
-            anime: {
-                filter: [],
-            },
-            repos:{}
-        },
+        user: {},
+        social: [],
+        anime: { filter: [] },
+        repos: { exclude: [], excludeStatus: [] },
     });
 
+    let error = $state({ error: false });
+
     $effect(async () => {
-        const res = await fetch("/api/config");
-        const data = await res.json();
-        config = data;
+        const data = await $getConfig();
+
+        if (data.error) {
+            error = data;
+        } else {
+            config = data;
+        }
     });
 </script>
 
 <div class="main-layout">
-    <ProfileLayout config={config.data} />
-    <AnimesLayout config={config.data} />
-    <ReposLayout config={config.data} />
+    {#if error.error}
+        <ErrorLayout {error} />
+    {:else}
+        <ProfileLayout {config} />
+        <AnimesLayout {config} />
+        <ReposLayout {config} />
+    {/if}
 </div>
 
 <style>
