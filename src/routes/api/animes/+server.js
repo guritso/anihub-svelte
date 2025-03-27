@@ -1,5 +1,8 @@
 import { json } from '@sveltejs/kit';
 
+const cache = new Map();
+const cacheDuration = 60 * 1000 * 5; // 5 minutes
+
 export async function GET({ url }) {
     const user = url.searchParams.get('user');
 
@@ -7,9 +10,17 @@ export async function GET({ url }) {
         return json({ error: 'Missing user parameter' }, { status: 400 });
     }
 
+    const cachedData = cache.get(user);
+
+    if (cachedData) {
+        return json(cachedData);
+    }
+
     try {
         const response = await fetch(`https://myanimelist.net/animelist/${user}/load.json?offset=0&order=5&status=7`);
         const data = await response.json();
+
+        saveToCache(user, reduceJson(data));
 
         return json(reduceJson(data));
     } catch (error) {
@@ -62,4 +73,12 @@ function getImageUrl(url) {
 function getDate(date) {
     const dateObj = new Date(date * 1000);
     return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function saveToCache(user, data) {
+    cache.set(user, data);
+
+    setTimeout(() => {
+        cache.delete(user);
+    }, cacheDuration);
 }
