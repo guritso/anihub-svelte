@@ -3,18 +3,23 @@
 
     let { config } = $props();
     let repos = $state([]);
+    let status = $state("loading...");
 
     $effect(async () => {
         const { excludeStatus } = config.repos;
 
         if (!config.user?.github) return;
 
-        const data = await fetch(
+        const res = await fetch(
             `/api/repos?user=${config.user.github}`,
         );
+        const data = await res.json();
 
-        repos = await data.json();
-        repos = repos.repos
+        if (data.error) {
+            status = data.error;
+            return;
+        }
+        repos = data.repos
             .filter((repo) => !config.repos.exclude.includes(repo.name))
             .filter((repo) =>
                 repo.fork && excludeStatus.includes("fork") ? false : true,
@@ -28,11 +33,17 @@
 </script>
 
 <div class="repos-layout">
-    <div class="repos-container">
-        {#each repos as repo}
-            <Card {repo} />
-        {/each}
-    </div>
+    {#if repos.length === 0}
+        <div class="repos-loading">
+            <p>{status}</p>
+        </div>
+    {:else}
+        <div class="repos-container">
+            {#each repos as repo}
+                <Card {repo} />
+            {/each}
+        </div>
+    {/if}
 </div>
 
 <style>
@@ -58,6 +69,16 @@
 
     .repos-container::-webkit-scrollbar {
         width: none;
+    }
+
+    .repos-loading {
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     @media (max-width: 600px) {
