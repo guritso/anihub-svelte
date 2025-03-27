@@ -10,11 +10,11 @@
         if (!config.user?.github) return;
 
         const data = await fetch(
-            `https://api.github.com/users/${config.user.github}/repos?sort=updated`,
+            `/api/repos?user=${config.user.github}`,
         );
 
         repos = await data.json();
-        repos = repos
+        repos = repos.repos
             .filter((repo) => !config.repos.exclude.includes(repo.name))
             .filter((repo) =>
                 repo.fork && excludeStatus.includes("fork") ? false : true,

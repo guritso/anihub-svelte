@@ -10,7 +10,7 @@
     }
 </script>
 
-<a href={repo.html_url} target="_blank" class="repo-card">
+<a href={repo.url} target="_blank" class="repo-card">
     <div class="repo-card-info">
         <div>
             <p class="repo-card-title">{repo.name}</p>
@@ -23,10 +23,10 @@
         </div>
         <div class="repo-card-bottom">
             <p class="repo-card-info-item">
-                &#9733; <span>{repo.stargazers_count || 0}</span>
+                &#9733; <span>{repo.stars || 0}</span>
             </p>
             <p class="repo-card-info-item-updated">
-                {formatDate(repo.updated_at)}
+                {formatDate(repo.updated)}
             </p>
         </div>
     </div>
