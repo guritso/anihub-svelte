@@ -40,7 +40,9 @@
         border-radius: var(--card-border-radius);
         object-fit: cover;
         object-position: center;
+        user-select: none;
     }
+
     .profile-info {
         display: flex;
         flex-direction: column;
