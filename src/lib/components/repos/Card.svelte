@@ -35,8 +35,8 @@
 <style>
     .repo-card {
         height: 167px;
-        border-radius: 1rem;
-        border: 1px solid #3a3f41;
+        border-radius: var(--card-border-radius);
+        border: var(--card-border-size) solid var(--border-color);
         display: flex;
         flex-direction: row;
     }
@@ -48,8 +48,8 @@
 
     .repo-card:active {
         transform: scale(0.995);
-        border-color: #2f3536;
-        background-color: #121414;
+        border-color: var(--border-color-active);
+        background-color: var(--background-color-active);
     }
 
     .repo-card-info {
@@ -74,7 +74,7 @@
 
     .repo-card-description {
         font-size: 0.9rem;
-        color: #94a3b8;
+        color: var(--text-color-highlight);
         margin: 0.5rem 0;
         display: -webkit-box;
         -webkit-line-clamp: 2;

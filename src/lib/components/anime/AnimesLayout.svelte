@@ -43,8 +43,8 @@
 
 <style>
     .animes-layout {
-        border: 1px solid #3a3f41;
-        border-radius: 1rem;
+        border: var(--layout-border-size) solid var(--border-color);
+        border-radius: var(--layout-border-radius);
         padding: 1rem;
         min-height: 240px;
         overflow: hidden;

@@ -44,12 +44,12 @@
     }
 
     a {
-        color: #e1dfdbcf;
+        color: var(--text-color-highlight);
         text-decoration: none;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 350;
-        border: 1px solid #3a3f41;
-        border-radius: 0.5rem;
+        border: var(--card-border-size) solid var(--border-color);
+        border-radius: var(--card-border-radius);
         padding: 0.4rem;
         min-width: 1.7rem;
         text-align: center;
@@ -64,9 +64,9 @@
     }
 
     a:active {
-        background-color: #121414;
-        border-color: #2f3536;
-        transform: scale(0.97);
+        background-color: var(--background-color-active);
+        border-color: var(--border-color-active);
+        transform: scale(0.99);
         transition: transform 0.1s ease-in-out;
     }
 

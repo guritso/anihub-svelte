@@ -26,8 +26,8 @@
         background-position: center;
         display: flex;
         flex-direction: row;
-        border: 1px solid #3a3f41;
-        border-radius: 1.5rem;
+        border: var(--layout-border-size) solid var(--border-color);
+        border-radius: var(--layout-border-radius);
         padding: 1rem;
         gap: 1rem;
         width: 100%;
@@ -37,7 +37,7 @@
     .profile-picture {
         width: 150px;
         height: 150px;
-        border-radius: 1rem;
+        border-radius: var(--card-border-radius);
         object-fit: cover;
         object-position: center;
     }

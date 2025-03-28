@@ -33,8 +33,9 @@
     .anime-card {
         width: 100%;
         height: 238px;
-        border-radius: 1rem;
-        border: 1px solid #3a3f41;
+        width: 350px;
+        border-radius: var(--card-border-radius);
+        border: var(--card-border-size) solid var(--border-color);
         display: flex;
         flex-direction: row;
     }
@@ -44,9 +45,7 @@
     }
 
     .anime-card-image img {
-        border-radius: 1rem;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
+        border-radius: var(--card-border-radius);
         width: 170px;
         height: 100%;
         object-fit: cover;
@@ -57,7 +56,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 0.3rem;
+        padding: 0.5rem;
     }
 
     .anime-card-title {
@@ -82,7 +81,6 @@
         font-size: 0.8rem;
         font-weight: 300;
         text-align: right;
-        margin-right: 0.2rem;
     }
 
     .anime-card-info-item span {
@@ -111,7 +109,7 @@
 
         .anime-card-image img {
             width: 100%;
-            border-radius: 1rem;
+            border-radius: var(--card-border-radius);
         }
 
         .anime-card-title {

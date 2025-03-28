@@ -50,8 +50,8 @@
     .repos-layout {
         display: flex;
         flex-direction: column;
-        border: 1px solid #3a3f41;
-        border-radius: 1rem;
+        border: var(--layout-border-size) solid var(--border-color);
+        border-radius: var(--layout-border-radius);
         gap: 1rem;
         height: 100%;
         min-height: 0;
