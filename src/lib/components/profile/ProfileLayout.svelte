@@ -55,13 +55,13 @@
     }
 
     .profile-name {
-        font-size: 1.9rem;
+        font-size: 1.8rem;
         font-weight: 500;
         margin: 0;
     }
 
     .profile-bio {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         line-height: 1.5;
         font-weight: 300;
         margin: 0;
@@ -86,7 +86,6 @@
 
         .profile-bio {
             text-align: center;
-            font-size: 1.3rem;
         }
     }
 </style>
