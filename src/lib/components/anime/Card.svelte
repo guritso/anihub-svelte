@@ -101,6 +101,7 @@
         .anime-card {
             flex-direction: column;
             height: 300px;
+            width: 100%;
         }
 
         .anime-card-image {
