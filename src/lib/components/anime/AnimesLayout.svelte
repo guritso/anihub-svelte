@@ -56,7 +56,7 @@
         gap: 1rem;
         width: max-content;
         animation: scroll 100s infinite linear;
-        animation-delay: 2s;
+        animation-delay: 1s;
     }
 
     .animes-container::-webkit-scrollbar {
