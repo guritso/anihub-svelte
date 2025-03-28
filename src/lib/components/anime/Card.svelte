@@ -4,7 +4,7 @@
 
 <article class="anime-card">
     <div class="anime-card-image">
-        <img src={anime.imageUrl} alt={anime.name} />
+        <img src={anime.imageUrl} alt={anime.name} crossorigin="anonymous"/>
     </div>
     <div class="anime-card-info">
         <div>

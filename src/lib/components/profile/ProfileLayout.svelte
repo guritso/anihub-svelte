@@ -9,6 +9,7 @@
         src={config.user.avatar || "/mine.webp"}
         alt=""
         class="profile-picture"
+        crossorigin="anonymous"
     />
     <div class="profile-info">
         <div class="info-container">
