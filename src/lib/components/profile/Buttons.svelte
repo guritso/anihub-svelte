@@ -59,8 +59,8 @@
     }
 
     a:hover {
-        background-color: #222425;
-        border-color: #60686b;
+        background-color: var(--background-color-hover);
+        border-color: var(--border-color-hover);
     }
 
     a:active {

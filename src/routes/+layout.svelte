@@ -1,8 +1,22 @@
 <script>
-	import "@fontsource-variable/m-plus-1-code";
+    import "@fontsource-variable/m-plus-1-code";
+
+	let { children } = $props();
+
+	$effect(() => {
+		const theme = localStorage.getItem("theme");
+
+		if (theme === "light") {
+			document.documentElement.classList.add("light-theme");
+		} else {
+			document.documentElement.classList.remove("light-theme");
+		}
+	});
 </script>
 
-<slot />
+<main>
+	{@render children()}
+</main>
 
 <style>
 	:root {
@@ -10,12 +24,27 @@
 		--border-color: #3a3f41;
 		--text-color: #e1dfdbcf;
 		--text-color-highlight: #94a3b8;
+		--text-color-hover: #b3b3b3;
+		--background-color-hover: #222425;
 		--background-color-active: #141718;
 		--border-color-active: #5a5a5acf;
+		--border-color-hover: #969696cf;
 		--layout-border-radius: 0.5rem;
 		--card-border-radius: 0.5rem;
 		--layout-border-size: 1px;
 		--card-border-size: 1px;
+	}
+
+	:global(.light-theme) {
+		--background-color: #b6b6b6cf;
+		--border-color: #acacac;
+		--text-color: #262829;
+		--text-color-highlight: #2e4058;
+		--background-color-hover: #b8b7b7;
+		--border-color-hover: #949494;
+		--text-color-hover: #292929;
+		--border-color-active: #838383;
+		--background-color-active: #aaa9a9;
 	}
 
 	:global(html) {
