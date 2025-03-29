@@ -16,7 +16,7 @@ A SvelteKit web page that integrates your MyAnimeList entries with your GitHub r
 
 ### Profile Features
 - Customizable profile with photo and bio
-- Dinamic social media links
+- Dynamic social media links
 
 ## Technology Stack
 
