@@ -3,19 +3,44 @@
     import sunSvg from "$lib/assets/sun.svg?raw";
 
     let { theme } = $props();
-
-    let light = $derived(theme === "light");
-
+    
+    let light = $state(false);
+    
     $effect(() => {
-        const button = document.querySelector(".theme-button");
+        const savedTheme = localStorage.getItem("theme");
 
-        button.addEventListener("click", () => {
-            const isLight = document.documentElement.classList.toggle(
-                "light-theme"
-            );
+        const initialTheme = savedTheme || theme;
+        
+        light = initialTheme === "light";
+        if (light) {
+            document.documentElement.classList.add("light-theme");
+        } else {
+            document.documentElement.classList.remove("light-theme");
+        }
+    });
 
-            light = isLight;
+    function toggleTheme() {
+        const isLight = !light;
+        light = isLight;
+        
+        if (isLight) {
+            document.documentElement.classList.add("light-theme");
+        } else {
+            document.documentElement.classList.remove("light-theme");
+        }
 
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    }
+</script>
+
+<div class="theme-button-container">
+    <button 
+        type="button" 
+        aria-label="Toggle theme" 
+        class="theme-button"
+        onclick={() => {
+            toggleTheme();
+            const button = document.querySelector(".theme-button");
             button.animate(
                 [
                     { transform: "rotate(0deg)" },
@@ -23,14 +48,8 @@
                 ],
                 { duration: 500, iterations: 1 }
             );
-
-            localStorage.setItem("theme", isLight ? "light" : "dark");
-        });
-    });
-</script>
-
-<div class="theme-button-container">
-    <button type="button" aria-label="Toggle theme" class="theme-button">
+        }}
+    >
         {@html light ? sunSvg : moonSvg}
     </button>
 </div>

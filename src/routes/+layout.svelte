@@ -2,16 +2,6 @@
     import "@fontsource-variable/m-plus-1-code";
 
 	let { children } = $props();
-
-	$effect(() => {
-		const theme = localStorage.getItem("theme");
-
-		if (theme === "light") {
-			document.documentElement.classList.add("light-theme");
-		} else {
-			document.documentElement.classList.remove("light-theme");
-		}
-	});
 </script>
 
 <main>
