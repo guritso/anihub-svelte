@@ -42,8 +42,8 @@
     }
 
     .repo-card:hover {
-        border-color: #60686b;
-        background-color: #222425;
+        border-color: var(--border-color-hover);
+        background-color: var(--background-color-hover);
     }
 
     .repo-card:active {

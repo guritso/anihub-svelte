@@ -1,5 +1,6 @@
 <script>
     import Buttons from "./Buttons.svelte";
+    import Theme from "./Theme.svelte";
 
     let { config } = $props();
 </script>
@@ -18,6 +19,7 @@
         </div>
         <Buttons social={config.social} />
     </div>
+    <Theme theme={config.theme} />
 </div>
 
 <style>

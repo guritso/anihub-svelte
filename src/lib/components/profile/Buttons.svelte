@@ -56,18 +56,17 @@
         white-space: nowrap;
         flex-shrink: 0;
         user-select: none;
-    }
+        transition: border-color 0.3s ease, transform 0.1s ease-in-out;
+        }
 
     a:hover {
-        background-color: #222425;
-        border-color: #60686b;
+        background-color: var(--background-color-hover);
+        border-color: var(--border-color-hover);
     }
 
     a:active {
         background-color: var(--background-color-active);
         border-color: var(--border-color-active);
-        transform: scale(0.99);
-        transition: transform 0.1s ease-in-out;
     }
 
     p {
