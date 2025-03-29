@@ -1,17 +1,20 @@
 <script>
     import moonSvg from "$lib/assets/moon.svg?raw";
     import sunSvg from "$lib/assets/sun.svg?raw";
-    import { fade } from 'svelte/transition';
-    import { spring } from 'svelte/motion';
+    import { fade } from "svelte/transition";
+    import { spring } from "svelte/motion";
 
     let { theme } = $props();
     let light = $state(false);
 
-    const iconRotation = spring({ x: 0 }, {
-        stiffness: 0.1,
-        damping: 0.4
-    });
-    
+    const iconRotation = spring(
+        { x: 0 },
+        {
+            stiffness: 0.1,
+            damping: 0.4,
+        },
+    );
+
     $effect(() => {
         const savedTheme = localStorage.getItem("theme");
         const initialTheme = savedTheme || theme;
@@ -29,7 +32,7 @@
     function toggleTheme() {
         const isLight = !light;
         light = isLight;
-        
+
         if (isLight) {
             document.documentElement.classList.add("light-theme");
             iconRotation.set({ x: 180 });
@@ -43,14 +46,14 @@
 </script>
 
 <div class="theme-button-container">
-    <button 
-        type="button" 
-        aria-label="Toggle theme" 
+    <button
+        type="button"
+        aria-label="Toggle theme"
         class="theme-button"
         onclick={toggleTheme}
     >
-        <div 
-            class="icon-container" 
+        <div
+            class="icon-container"
             style="transform: rotate({$iconRotation.x}deg)"
             in:fade={{ duration: 200 }}
             out:fade={{ duration: 200 }}

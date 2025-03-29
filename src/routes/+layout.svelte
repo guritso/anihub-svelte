@@ -1,5 +1,5 @@
 <script>
-    import "@fontsource-variable/m-plus-1-code";
+	import "@fontsource-variable/m-plus-1-code";
 
 	let { children } = $props();
 </script>
@@ -26,15 +26,15 @@
 	}
 
 	:global(.light-theme) {
-		--background-color: #b6b6b6cf;
-		--border-color: #acacac;
-		--text-color: #262829;
-		--text-color-highlight: #2e4058;
-		--background-color-hover: #b8b7b7;
-		--border-color-hover: #949494;
+		--background-color: #ddd7d5;
+		--border-color: #bdb6b1;
+		--text-color: #18191a;
+		--text-color-highlight: #2d2953;
+		--background-color-hover: #d3cbc8;
+		--border-color-hover: #a7a09a;
 		--text-color-hover: #292929;
-		--border-color-active: #838383;
-		--background-color-active: #aaa9a9;
+		--border-color-active: #afaaa4;
+		--background-color-active: #cac1ba;
 	}
 
 	:global(html) {
@@ -56,7 +56,7 @@
 		align-items: center;
 		transition: background-color 0.3s ease;
 	}
-	
+
 	:global(a) {
 		text-decoration: none;
 		color: var(--text-color);
