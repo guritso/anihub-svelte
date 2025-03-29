@@ -14,6 +14,7 @@
         repos: { exclude: [], excludeStatus: [] },
     });
 
+    let user = $state({});
     let error = $state({ error: false });
 
     $effect(async () => {
@@ -23,9 +24,15 @@
             error = data;
         } else {
             config = data;
+            user = data.user;
         }
     });
 </script>
+
+<svelte:head>
+    <title>{user.name}</title>
+    <meta name="description" content={user.bio} />
+</svelte:head>
 
 <div class="main-layout">
     {#if error.error}
