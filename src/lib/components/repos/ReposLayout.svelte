@@ -6,29 +6,26 @@
     let status = $state("loading...");
 
     $effect(async () => {
-        const { excludeStatus } = config.repos;
+        const { exclude, forks, archiveds, limit } = config.repos;
 
         if (!config.user?.github) return;
 
-        const res = await fetch(
-            `/api/repos?user=${config.user.github}`,
-        );
+        const res = await fetch(`/api/repos?user=${config.user.github}`);
         const data = await res.json();
 
         if (data.error) {
             status = data.error;
             return;
         }
+
         repos = data.repos
-            .filter((repo) => !config.repos.exclude.includes(repo.name))
-            .filter((repo) =>
-                repo.fork && excludeStatus.includes("fork") ? false : true,
-            )
-            .filter((repo) =>
-                repo.archived && excludeStatus.includes("archived")
-                    ? false
-                    : true,
-            );
+            .filter((repo) => !exclude.includes(repo.name))
+            .filter((repo) => {
+                if (!forks && repo.fork) return false;
+                if (!archiveds && repo.archived) return false;
+                return true;
+            })
+            .slice(0, limit);
     });
 </script>
 

@@ -34,10 +34,9 @@
             "GuriTso",
             "gurizenit-site"
         ],
-        "excludeStatus": [
-            "archived",
-            "fork"
-        ]
+        "forks": false,
+        "archiveds": false,
+        "limit": 30
     },
     "theme": "dark"
 }
