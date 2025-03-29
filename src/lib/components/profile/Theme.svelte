@@ -96,7 +96,7 @@
 
     @media (max-width: 600px) {
         .theme-button-container {
-            position: fixed;
+            position: absolute;
             top: 10px;
             right: 10px;
         }
