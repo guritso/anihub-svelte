@@ -93,4 +93,12 @@
         display: inline-block;
         will-change: transform;
     }
+
+    @media (max-width: 600px) {
+        .theme-button-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+    }
 </style>
