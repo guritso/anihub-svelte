@@ -14,7 +14,7 @@
         repos: { exclude: [], excludeStatus: [] },
     });
 
-    let user = $state({});
+    let user = $state({ name: "loading..." });
     let error = $state({ error: false });
 
     $effect(async () => {
