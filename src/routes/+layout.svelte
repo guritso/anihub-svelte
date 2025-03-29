@@ -54,9 +54,15 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		transition: background-color 0.3s ease;
 	}
+	
 	:global(a) {
 		text-decoration: none;
 		color: var(--text-color);
+	}
+
+	:global([class*="layout"], [class*="card"]) {
+		transition: border-color 0.3s ease;
 	}
 </style>
