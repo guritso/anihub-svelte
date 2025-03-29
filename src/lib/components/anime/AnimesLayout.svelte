@@ -5,11 +5,15 @@
     let animes = $state([]);
     let status = $state("loading...");
 
+    let rowSpeed = $derived(
+        animes.length > 3 ? animes.length / config.anime.rowSpeed : 0,
+    );
+
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
 
         const res = await fetch(
-            `/api/animes?user=${config.user.myAnimeList}`,
+            `/api/animes?user=${config.user.myAnimeList}&cache=${config.anime.cache}`,
         );
         const data = await res.json();
 
@@ -20,10 +24,12 @@
 
         const filter = config.anime.filter;
 
-        animes = data
-            .filter((card) => filter.includes(card.user.status))
-            .slice(0, 30);
-        animes = [...animes, ...animes];
+        animes = data.filter((card) => filter.includes(card.user.status))
+            .slice(0, config.anime.limit);
+
+        if (config.anime.limit > 3) {
+            animes = [...animes, ...animes];
+        }
     });
 </script>
 
@@ -33,7 +39,7 @@
             <p>{status}</p>
         </div>
     {:else}
-        <div class="animes-container">
+        <div class="animes-container" style={`--row-speed: ${rowSpeed}s`}>
             {#each animes as anime}
                 <Card {anime} />
             {/each}
@@ -55,7 +61,7 @@
         flex-direction: row;
         gap: 1rem;
         width: max-content;
-        animation: scroll 100s infinite linear;
+        animation: scroll var(--row-speed) linear infinite;
         animation-delay: 1s;
     }
 
