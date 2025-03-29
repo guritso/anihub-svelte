@@ -35,5 +35,6 @@
             "archived",
             "fork"
         ]
-    }
+    },
+    "theme": "dark"
 }

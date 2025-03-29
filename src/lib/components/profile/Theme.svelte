@@ -1,33 +1,37 @@
 <script>
     import moonSvg from "$lib/assets/moon.svg?raw";
     import sunSvg from "$lib/assets/sun.svg?raw";
+
     let { theme } = $props();
-    let themeState = $state(theme);
+
+    let light = $derived(theme === "light");
 
     $effect(() => {
-        document.documentElement.classList.toggle("light-theme");
-        localStorage.setItem("theme", themeState);
+        const button = document.querySelector(".theme-button");
 
-        const button = document.querySelector(".theme-button-container button");
+        button.addEventListener("click", () => {
+            const isLight = document.documentElement.classList.toggle(
+                "light-theme"
+            );
 
-        button.animate(
-            [
-                { transform: "rotate(0deg)" },
-                { transform: "rotate(360deg)" },
-            ],
-            { duration: 500, iterations: 1 }
-        );
+            light = isLight;
+
+            button.animate(
+                [
+                    { transform: "rotate(0deg)" },
+                    { transform: "rotate(360deg)" },
+                ],
+                { duration: 500, iterations: 1 }
+            );
+
+            localStorage.setItem("theme", isLight ? "light" : "dark");
+        });
     });
 </script>
 
 <div class="theme-button-container">
-    <button
-        type="button"
-        aria-label="Toggle theme"
-        onclick={() => (themeState = themeState === "light" ? "dark" : "light")}
-        class={themeState}
-    >
-        {@html themeState === "dark" ? sunSvg : moonSvg}
+    <button type="button" aria-label="Toggle theme" class="theme-button">
+        {@html light ? sunSvg : moonSvg}
     </button>
 </div>
 
