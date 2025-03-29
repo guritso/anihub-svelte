@@ -24,7 +24,7 @@ A SvelteKit web page that integrates your MyAnimeList entries with your GitHub r
 - Vite
 - PNPM package manager
 - APIs:
-  - MyAnimeList (unnoficial)
+  - MyAnimeList (Unofficial)
   - GitHub
 
 ## Configuration
