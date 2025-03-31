@@ -1,4 +1,6 @@
 <script>
+    import githubSvg from "$lib/assets/github.svg?raw";
+
     let { repo } = $props();
 
     function formatDate(dateString) {
@@ -8,12 +10,19 @@
             month: "short",
         });
     }
+
+    function isRecentlyUpdated(updatedDate) {
+        const updated = new Date(updatedDate);
+        const now = new Date();
+        const diffDays = (now - updated) / (1000 * 60 * 60 * 24);
+        return diffDays < 7;
+    }
 </script>
 
-<a href={repo.url} target="_blank" class="repo-card">
+<a href={repo.url} target="_blank" class="repo-card" aria-label={`Repository ${repo.name}`}>
     <div class="repo-card-info">
         <div>
-            <p class="repo-card-title">{repo.name}</p>
+            <p class="repo-card-title">{@html githubSvg} {repo.name}</p>
             <p class="repo-card-description">
                 {repo.description || "No description available."}
             </p>
@@ -23,10 +32,13 @@
         </div>
         <div class="repo-card-bottom">
             <p class="repo-card-info-item">
-                &#9733; <span>{repo.stars || 0}</span>
+                ★ <span>{repo.stars || 0}</span>
             </p>
             <p class="repo-card-info-item-updated">
                 {formatDate(repo.updated)}
+                {#if isRecentlyUpdated(repo.updated)}
+                    <span class="recently-updated">updated</span>
+                {/if}
             </p>
         </div>
     </div>
@@ -34,7 +46,7 @@
 
 <style>
     .repo-card {
-        height: 167px;
+        height: 160px;
         border-radius: var(--card-border-radius);
         border: var(--card-border-size) solid var(--border-color);
         display: flex;
@@ -47,7 +59,7 @@
     }
 
     .repo-card:active {
-        transform: scale(0.995);
+        transform: scale(0.98);
         border-color: var(--border-color-active);
         background-color: var(--background-color-active);
     }
@@ -65,11 +77,14 @@
         font-weight: 400;
         margin-bottom: 0.5rem;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .repo-card-description {
@@ -100,6 +115,15 @@
         font-weight: 300;
         text-align: right;
         margin-right: 0.2rem;
+    }
+
+    .recently-updated {
+        background-color: #57a059;
+        color: var(--text-color);
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 0.7rem;
+        margin-left: 5px;
     }
 
     .repo-card-info-item span {
