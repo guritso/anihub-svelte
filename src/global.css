@@ -12,6 +12,11 @@
     --card-border-radius: 0.5rem;
     --layout-border-size: 1px;
     --card-border-size: 1px;
+    --watching-color: #65a165;
+    --completed-color: #6581a1;
+    --on-hold-color: #a18165;
+    --dropped-color: #a16565;
+    --plan-to-watch-color: #5a5f5a;
 }
 
 .light-theme {

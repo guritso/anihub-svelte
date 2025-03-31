@@ -40,6 +40,7 @@ function reduceJson(json) {
             mediaType: anime.anime_media_type_string,
             imageUrl: getImageUrl(anime.anime_image_path),
             url: `https://myanimelist.net/anime/${anime.anime_id}`,
+            genres: anime.genres?.map((genre) => genre.name),
             user: {
                 status: getStatus(anime.status),
                 score: anime.score,
