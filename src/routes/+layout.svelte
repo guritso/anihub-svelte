@@ -16,7 +16,7 @@
         align-items: center;
         justify-content: flex-start;
         min-height: 100vh;
-		width: 100%;
+        width: 100%;
         box-sizing: border-box;
     }
 </style>
