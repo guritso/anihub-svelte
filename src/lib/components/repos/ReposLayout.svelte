@@ -56,8 +56,7 @@
         border: var(--layout-border-size) solid var(--border-color);
         border-radius: var(--layout-border-radius);
         gap: 1rem;
-        height: 100%;
-        max-height: 96.5vh;
+        max-height: 100vh;
         flex: 1;
     }
     
