@@ -31,6 +31,12 @@
             animes = [...animes, ...animes];
         }
     });
+
+    setTimeout(() => {
+        if (animes.length === 0) {
+            status = "No animes found";
+        }
+    }, 10000);
 </script>
 
 <div class="animes-layout">

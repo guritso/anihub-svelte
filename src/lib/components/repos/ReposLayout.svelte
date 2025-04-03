@@ -27,6 +27,12 @@
             })
             .slice(0, limit);
     });
+
+    setTimeout(() => {
+        if (repos.length === 0) {
+            status = "No repos found";
+        }
+    }, 10000);
 </script>
 
 <div class="repos-layout">
@@ -51,21 +57,16 @@
         border-radius: var(--layout-border-radius);
         gap: 1rem;
         height: 100%;
-        min-height: 0;
+        max-height: 96.5vh;
         flex: 1;
-        padding: 1rem;
     }
-
+    
     .repos-container {
         display: grid;
         overflow-y: auto;
-        scrollbar-width: none;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
-    }
-
-    .repos-container::-webkit-scrollbar {
-        width: none;
+        padding: 1rem;
     }
 
     .repos-loading {
