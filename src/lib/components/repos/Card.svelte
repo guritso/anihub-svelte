@@ -54,6 +54,7 @@
     }
 
     .repo-card:hover {
+        transform: scale(1.01);
         border-color: var(--border-color-hover);
         background-color: var(--background-color-hover);
     }
@@ -73,6 +74,7 @@
     }
 
     .repo-card-title {
+        display: flex;
         font-size: 1.05rem;
         font-weight: 400;
         margin-bottom: 0.5rem;
@@ -81,7 +83,6 @@
         line-clamp: 1;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        display: flex;
         flex-direction: row;
         align-items: center;
         gap: 0.5rem;

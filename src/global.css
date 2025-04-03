@@ -17,6 +17,8 @@
     --on-hold-color: #a18165;
     --dropped-color: #a16565;
     --plan-to-watch-color: #5a5f5a;
+    --scrollbar-color: #36383b;
+    --scrollbar-background-color: #181a1b;
 }
 
 .light-theme {
@@ -29,11 +31,16 @@
     --text-color-hover: #292929;
     --border-color-active: #afaaa4;
     --background-color-active: #cac1ba;
+    --scrollbar-color: #747474;
+    --scrollbar-background-color: #ddd7d5;
 }
 
-html {
+* {
     margin: 0;
     padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) var(--scrollbar-background-color);
+    transition: scrollbar-color 0.3s ease;
 }
 
 body {
