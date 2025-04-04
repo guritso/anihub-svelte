@@ -12,9 +12,12 @@
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
 
-        const res = await fetch(
-            `/api/animes?user=${config.user.myAnimeList}&cache=${config.anime.cache}`,
-        );
+        const res = await fetch(`/api/animes?user=${config.user.myAnimeList}`, {
+            headers: {
+                cache: config.anime.cache,
+            },
+        });
+
         const data = await res.json();
 
         if (data.error) {
@@ -24,7 +27,8 @@
 
         const filter = config.anime.filter;
 
-        animes = data.filter((card) => filter.includes(card.user.status))
+        animes = data
+            .filter((card) => filter.includes(card.user.status))
             .slice(0, config.anime.limit);
 
         if (config.anime.limit > 3) {

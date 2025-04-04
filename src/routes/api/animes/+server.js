@@ -3,9 +3,9 @@ import { json } from '@sveltejs/kit';
 const cacheData = new Map();
 const cacheDuration = 60 * 1000 * 5; // 5 minutes
 
-export async function GET({ url }) {
+export async function GET({ url, request }) {
     const user = url.searchParams.get('user');
-    const cache = url.searchParams.get('cache');
+    const cache = request.headers.get('cache');
 
     if (!user) {
         return json({ error: 'Missing user parameter' }, { status: 400 });
