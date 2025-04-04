@@ -19,15 +19,19 @@ export async function GET({ url, request }) {
 
     try {
         const response = await fetch(`https://myanimelist.net/animelist/${user}/load.json?offset=0&order=5&status=7`);
-        const data = await response.json();
 
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
+        const data = await response.json();
         const reducedJson = reduceJson(data);
 
         saveToCache(user, reducedJson);
 
         return json(reducedJson);
     } catch (error) {
-        return json({ error: 'Failed to fetch anime list' }, { status: 500 });
+        return json({ error: 'Failed to fetch anime list', reason: error.message }, { status: 500 });
     }
 }
 

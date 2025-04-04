@@ -17,14 +17,21 @@ export async function GET({ url }) {
             return json(cachedData);
         }
 
-        const response = await fetch(`https://api.github.com/users/${user}/repos?sort=updated`);
+        const response = await fetch(`https://api.github.com/users/9dsdsd/repos?sort=updated`);
+
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+
         const data = await response.json();
 
         saveToCache(user, reduceJson(data));
 
         return json(reduceJson(data));
     } catch (error) {
-        return json({ error: "Failed to fetch repos" }, { status: 500 });
+        return json({
+            error: "Failed to fetch repos", reason: error.message
+        }, { status: 500 });
     }
 }
 
