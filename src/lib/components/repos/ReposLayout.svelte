@@ -29,7 +29,7 @@
     });
 
     setTimeout(() => {
-        if (repos.length === 0) {
+        if (repos.length === 0 && status === "loading...") {
             status = "No repos found";
         }
     }, 10000);

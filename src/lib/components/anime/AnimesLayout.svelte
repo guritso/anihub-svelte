@@ -33,7 +33,7 @@
     });
 
     setTimeout(() => {
-        if (animes.length === 0) {
+        if (animes.length === 0 && status === "loading...") {
             status = "No animes found";
         }
     }, 10000);
