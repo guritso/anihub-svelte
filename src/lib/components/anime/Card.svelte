@@ -28,7 +28,7 @@
         <div>
             <a href={anime.url} target="_blank" class="anime-card-title">{anime.name}</a>
             <p class="anime-card-info-item">
-                Episodes: <span>{anime.user.episodes}/{anime.episodes}</span>
+                Episodes: <span>{anime.user.episodes}/{anime.episodes || "?"}</span>
             </p>
             <div class="progress-bar">
                 <div class="progress" style={`width: ${progressPercentage}%`}></div>
