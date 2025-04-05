@@ -81,6 +81,11 @@
     @media (max-width: 600px) {
         .repos-layout {
             border: none;
+            max-height: 100%;
+        }
+
+        .repos-container {
+            overflow: hidden;
         }
     }
 </style>
