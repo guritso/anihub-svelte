@@ -19,10 +19,20 @@
     }
 </script>
 
-<a href={repo.url} target="_blank" class="repo-card" aria-label={`Repository ${repo.name}`}>
+<a
+    href={repo.url}
+    target="_blank"
+    class="repo-card"
+    aria-label={`Repository ${repo.name}`}
+>
     <div class="repo-card-info">
         <div>
-            <p class="repo-card-title">{@html githubSvg} {repo.name}</p>
+            <div class="repo-card-title-container">
+                <div class="repo-card-title-container-icon">
+                    {@html githubSvg}
+                </div>
+                <p class="repo-card-title">{repo.name}</p>
+            </div>
             <p class="repo-card-description">
                 {repo.description || "No description available."}
             </p>
@@ -71,21 +81,31 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 0.5rem;
+        box-sizing: border-box;
+    }
+
+    .repo-card-title-container {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .repo-card-title-container-icon {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 100%;
     }
 
     .repo-card-title {
         display: flex;
-        font-size: 1.05rem;
-        font-weight: 400;
-        margin-bottom: 0.5rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 0.5rem;
+        font-size: 1.04rem;
+        font-weight: 400;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .repo-card-description {
