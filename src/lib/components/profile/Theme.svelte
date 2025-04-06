@@ -12,7 +12,7 @@
         {
             stiffness: 0.1,
             damping: 0.4,
-        },
+        }
     );
 
     $effect(() => {

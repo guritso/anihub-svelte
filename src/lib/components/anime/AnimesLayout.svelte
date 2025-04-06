@@ -6,7 +6,7 @@
     let status = $state("loading...");
 
     let rowSpeed = $derived(
-        animes.length > 3 ? animes.length / config.anime.rowSpeed : 0,
+        animes.length > 3 ? animes.length / config.anime.rowSpeed : 0
     );
 
     $effect(async () => {
