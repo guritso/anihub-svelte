@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { URL, URLSearchParams } from "url";
+import { URL, URLSearchParams } from "node:url";
 
 const cacheData = new Map();
 const cacheDuration = 60 * 1000 * 5; // 5 minutes
