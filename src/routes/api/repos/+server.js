@@ -7,7 +7,7 @@ export async function GET({ url }) {
     const user = url.searchParams.get("user");
 
     if (!user) {
-        return json({ error: "User is required" }, { status: 400 });
+        return json({ error: "User parameter is required" }, { status: 400 });
     }
 
     try {
