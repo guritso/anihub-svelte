@@ -10,8 +10,10 @@
     --border-color-hover: #969696cf;
     --layout-border-radius: 0.5rem;
     --card-border-radius: 0.5rem;
+    --button-border-radius: 0.2rem;
     --layout-border-size: 1px;
     --card-border-size: 1px;
+    --button-border-size: 1px;
     --watching-color: #65a165;
     --completed-color: #6581a1;
     --on-hold-color: #a18165;

@@ -142,7 +142,7 @@
         background-color: #57a059;
         color: var(--text-color);
         padding: 2px 5px;
-        border-radius: 3px;
+        border-radius: var(--button-border-radius);
         font-size: 0.7rem;
         margin-left: 5px;
     }

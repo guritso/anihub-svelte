@@ -48,8 +48,8 @@
         text-decoration: none;
         font-size: 1.1rem;
         font-weight: 350;
-        border: var(--card-border-size) solid var(--border-color);
-        border-radius: var(--card-border-radius);
+        border: var(--button-border-size) solid var(--border-color);
+        border-radius: var(--button-border-radius);
         padding: 0.4rem;
         min-width: 1.7rem;
         text-align: center;

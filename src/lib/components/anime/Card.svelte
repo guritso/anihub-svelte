@@ -143,9 +143,10 @@
     .genre-tag {
         background-color: var(--border-color);
         padding: 2px 6px;
-        border-radius: 4px;
+        border-radius: var(--button-border-radius);
         margin-right: 4px;
         font-size: 0.8rem;
+        transition:background-color 0.3s ease;
     }
 
     @media (max-width: 600px) {
