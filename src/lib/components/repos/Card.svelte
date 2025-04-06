@@ -1,5 +1,6 @@
 <script>
     import githubSvg from "$lib/assets/github.svg?raw";
+    import fireSvg from "$lib/assets/fire.svg?raw";
 
     let { repo } = $props();
 
@@ -45,10 +46,12 @@
                 ★ <span>{repo.stars || 0}</span>
             </p>
             <p class="repo-card-info-item-updated">
-                {formatDate(repo.updated)}
                 {#if isRecentlyUpdated(repo.updated)}
-                    <span class="recently-updated">updated</span>
+                    <span class="recently-updated">
+                        {@html fireSvg}
+                    </span>
                 {/if}
+                {formatDate(repo.updated)}
             </p>
         </div>
     </div>
@@ -132,6 +135,10 @@
     }
 
     .repo-card-info-item-updated {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
         font-size: 0.8rem;
         font-weight: 300;
         text-align: right;
@@ -139,12 +146,14 @@
     }
 
     .recently-updated {
-        background-color: #57a059;
-        color: var(--text-color);
-        padding: 2px 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--count-fire-color);
+        font-weight: 400;
         border-radius: var(--button-border-radius);
-        font-size: 0.7rem;
-        margin-left: 5px;
+        font-size: 0.8rem;
+        margin-right: 6px;
     }
 
     .repo-card-info-item span {

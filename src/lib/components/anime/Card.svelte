@@ -153,7 +153,7 @@
 
     .progress {
         height: 100%;
-        background-color: #57a059;
+        background-color: var(--count-fire-color);
         border-radius: 2.5px;
     }
 
