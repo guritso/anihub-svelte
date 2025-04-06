@@ -17,7 +17,9 @@ export async function GET({ url }) {
             return json(cachedData);
         }
 
-        const response = await fetch(`https://api.github.com/users/${user}/repos?sort=updated`);
+        const response = await fetch(
+            `https://api.github.com/users/${user}/repos?sort=updated`
+        );
 
         if (!response.ok) {
             throw new Error(response.statusText);
@@ -29,9 +31,13 @@ export async function GET({ url }) {
 
         return json(reduceJson(data));
     } catch (error) {
-        return json({
-            error: "Failed to fetch repos", reason: error.message
-        }, { status: 500 });
+        return json(
+            {
+                error: "Failed to fetch repos",
+                reason: error.message,
+            },
+            { status: 500 }
+        );
     }
 }
 
