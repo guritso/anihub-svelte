@@ -1,24 +1,35 @@
-import { json } from '@sveltejs/kit';
+import { json } from "@sveltejs/kit";
+import { URL, URLSearchParams } from "url";
 
 const cacheData = new Map();
 const cacheDuration = 60 * 1000 * 5; // 5 minutes
 
 export async function GET({ url, request }) {
-    const user = url.searchParams.get('user');
-    const cache = request.headers.get('cache');
+    const user = url.searchParams.get("user");
+    const cache = request.headers.get("cache");
 
     if (!user) {
-        return json({ error: 'Missing user parameter' }, { status: 400 });
+        return json({ error: "User parameter is required" }, { status: 400 });
     }
+
+    const params = new URLSearchParams({
+        offset: 0,
+        order: 5,
+        status: 7,
+    });
+
+    const malUrl = new URL(
+        `https://myanimelist.net/animelist/${user}/load.json?${params}`
+    );
 
     const cachedData = cacheData.get(user);
 
-    if (cachedData && cache === 'true') {
+    if (cachedData && cache === "true") {
         return json(cachedData);
     }
 
     try {
-        const response = await fetch(`https://myanimelist.net/animelist/${user}/load.json?offset=0&order=5&status=7`);
+        const response = await fetch(malUrl);
 
         if (!response.ok) {
             throw new Error(response.statusText);
@@ -31,7 +42,10 @@ export async function GET({ url, request }) {
 
         return json(reducedJson);
     } catch (error) {
-        return json({ error: 'Failed to fetch anime list', reason: error.message }, { status: 500 });
+        return json(
+            { error: "Failed to fetch anime list", reason: error.message },
+            { status: 500 }
+        );
     }
 }
 
@@ -58,29 +72,33 @@ function reduceJson(json) {
 function getStatus(status) {
     switch (status) {
         case 1:
-            return 'watching';
+            return "watching";
         case 2:
-            return 'completed';
+            return "completed";
         case 3:
-            return 'on hold';
+            return "on hold";
         case 4:
-            return 'dropped';
+            return "dropped";
         case 6:
-            return 'plan to watch';
+            return "plan to watch";
         default:
-            return 'unknown';
+            return "unknown";
     }
 }
 
 function getImageUrl(url) {
     return url
-        ? url.replace('/r/192x272/', '/').replace('.jpg', '.webp').split('?')[0]
-        : 'https://placehold.co/192x272?text=No%20image';
+        ? url.replace("/r/192x272/", "/").replace(".jpg", ".webp").split("?")[0]
+        : "https://placehold.co/192x272?text=No%20image";
 }
 
 function getDate(date) {
     const dateObj = new Date(date * 1000);
-    return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    return dateObj.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    });
 }
 
 function saveToCache(user, data) {
