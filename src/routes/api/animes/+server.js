@@ -29,7 +29,11 @@ export async function GET({ url, request }) {
     }
 
     try {
-        const response = await fetch(malUrl);
+        const response = await fetch(malUrl, {
+            headers: {
+                "User-Agent": "anihub-svelte-app",
+            },
+        });
 
         if (!response.ok) {
             throw new Error(response.statusText);

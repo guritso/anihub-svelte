@@ -18,7 +18,12 @@ export async function GET({ url }) {
         }
 
         const response = await fetch(
-            `https://api.github.com/users/${user}/repos?sort=updated`
+            `https://api.github.com/users/${user}/repos?sort=updated`,
+            {
+                headers: {
+                    "User-Agent": "anihub-svelte-app",
+                },
+            }
         );
 
         if (!response.ok) {
