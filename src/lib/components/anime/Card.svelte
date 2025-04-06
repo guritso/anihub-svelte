@@ -84,6 +84,7 @@
         border-left: 4px solid var(--current-status-color);
         display: flex;
         flex-direction: row;
+        cursor: default;
     }
 
     .anime-card:hover {
