@@ -2,17 +2,14 @@
     let { social } = $props();
     let container;
 
-    $effect(async () => {
-        container = document.querySelector(".social-button-container");
-        container.addEventListener("wheel", function (event) {
-            event.preventDefault();
-            container.scrollLeft += event.deltaY;
-        });
-    });
+    function handleWheel(event) {
+        event.preventDefault();
+        container.scrollLeft += event.deltaY;
+    }
 </script>
 
 <div class="social-buttons">
-    <div class="social-button-container">
+    <div class="social-button-container" bind:this={container} onwheel={handleWheel}>
         {#each social as button}
             <a href={button.url} target="_blank">
                 <p>{button.name}</p>
