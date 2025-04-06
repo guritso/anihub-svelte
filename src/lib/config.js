@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable } from "svelte/store";
 
 export const getConfig = writable(async function () {
     try {
@@ -14,7 +14,7 @@ export const getConfig = writable(async function () {
 
         const data = await res.json();
 
-        return data
+        return data;
     } catch (error) {
         return {
             error: true,

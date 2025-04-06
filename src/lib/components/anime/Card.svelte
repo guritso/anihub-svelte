@@ -1,6 +1,8 @@
 <script>
     let { anime } = $props();
-    let progressPercentage = $derived(anime.episodes > 0 ? (anime.user.episodes / anime.episodes) * 100 : 0);
+    let progressPercentage = $derived(
+        anime.episodes > 0 ? (anime.user.episodes / anime.episodes) * 100 : 0
+    );
 
     const statusColor = (status) => {
         switch (status) {
@@ -17,27 +19,47 @@
             default:
                 return "var(--watching-color)";
         }
-    }
+    };
 </script>
 
-<article class="anime-card" style={`--current-status-color: ${statusColor(anime.user.status)}`}>
+<article
+    class="anime-card"
+    style={`--current-status-color: ${statusColor(anime.user.status)}`}
+>
     <div class="anime-card-image">
-        <img src={anime.imageUrl} alt={anime.name} crossorigin="anonymous" loading="eager"/>
+        <img
+            src={anime.imageUrl}
+            alt={anime.name}
+            crossorigin="anonymous"
+            loading="eager"
+        />
     </div>
     <div class="anime-card-info">
         <div>
-            <a href={anime.url} target="_blank" class="anime-card-title">{anime.name}</a>
+            <a href={anime.url} target="_blank" class="anime-card-title"
+                >{anime.name}</a
+            >
             <p class="anime-card-info-item">
-                Episodes: <span>{anime.user.episodes}/{anime.episodes || "?"}</span>
+                Episodes: <span
+                    >{anime.user.episodes}/{anime.episodes || "?"}</span
+                >
             </p>
             <div class="progress-bar">
-                <div class="progress" style={`width: ${progressPercentage}%`}></div>
+                <div
+                    class="progress"
+                    style={`width: ${progressPercentage}%`}
+                ></div>
             </div>
             <p class="anime-card-info-item">
-                Status: <span class={`status-badge status-${anime.user.status.replace(' ', '-')}`}>{anime.user.status}</span>
+                Status: <span
+                    class={`status-badge status-${anime.user.status.replace(" ", "-")}`}
+                    >{anime.user.status}</span
+                >
             </p>
             <p class="anime-card-info-item">
-                Scored: <span>{anime.user.score ? anime.user.score + "/10" : "N/A"}</span>
+                Scored: <span
+                    >{anime.user.score ? anime.user.score + "/10" : "N/A"}</span
+                >
             </p>
             {#if anime.genres && anime.genres.length > 0}
                 <p class="anime-card-info-item anime-card-info-item-genres">
@@ -146,7 +168,7 @@
         border-radius: var(--button-border-radius);
         margin-right: 4px;
         font-size: 0.8rem;
-        transition:background-color 0.3s ease;
+        transition: background-color 0.3s ease;
     }
 
     @media (max-width: 600px) {

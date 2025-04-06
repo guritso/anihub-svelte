@@ -59,7 +59,7 @@
         max-height: 100vh;
         flex: 1;
     }
-    
+
     .repos-container {
         display: grid;
         overflow-y: auto;
