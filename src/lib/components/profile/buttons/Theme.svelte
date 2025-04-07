@@ -45,30 +45,23 @@
     }
 </script>
 
-<div class="theme-button-container">
-    <button
-        type="button"
-        aria-label="Toggle theme"
-        class="theme-button"
-        onclick={toggleTheme}
+<button
+    type="button"
+    aria-label="Toggle theme"
+    class="theme-button"
+    onclick={toggleTheme}
+>
+    <div
+        class="icon-container"
+        style="transform: rotate({$iconRotation.x}deg)"
+        in:fade={{ duration: 200 }}
+        out:fade={{ duration: 200 }}
     >
-        <div
-            class="icon-container"
-            style="transform: rotate({$iconRotation.x}deg)"
-            in:fade={{ duration: 200 }}
-            out:fade={{ duration: 200 }}
-        >
-            {@html light ? sunSvg : moonSvg}
-        </div>
-    </button>
-</div>
+        {@html light ? sunSvg : moonSvg}
+    </div>
+</button>
 
 <style>
-    .theme-button-container {
-        display: flex;
-        justify-content: center;
-    }
-
     button {
         background: none;
         border: none;
@@ -92,13 +85,5 @@
     .icon-container {
         display: inline-block;
         will-change: transform;
-    }
-
-    @media (max-width: 600px) {
-        .theme-button-container {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
     }
 </style>

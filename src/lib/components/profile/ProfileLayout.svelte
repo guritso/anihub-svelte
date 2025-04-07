@@ -1,6 +1,6 @@
 <script>
-    import Buttons from "./Buttons.svelte";
-    import Theme from "./Theme.svelte";
+    import SocialButtons from "./SocialButtons.svelte";
+    import ActionButtons from "./ActionButtons.svelte";
 
     let { config } = $props();
 </script>
@@ -17,9 +17,9 @@
             <h1 class="profile-name">{config.user.name}</h1>
             <p class="profile-bio">{config.user.bio}</p>
         </div>
-        <Buttons social={config.social} />
+        <SocialButtons social={config.social} />
     </div>
-    <Theme theme={config.theme} />
+    <ActionButtons theme={config.theme} />
 </div>
 
 <style>
@@ -34,6 +34,7 @@
         gap: 1rem;
         width: 100%;
         box-sizing: border-box;
+        position: relative;
     }
 
     .profile-picture {
@@ -92,4 +93,4 @@
             text-align: center;
         }
     }
-</style>
+</style> 
