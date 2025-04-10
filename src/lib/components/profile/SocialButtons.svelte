@@ -8,6 +8,14 @@
     }
 </script>
 
+<svelte:head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous"
+    />
+</svelte:head>
+
 <div class="social-buttons">
     <div
         class="social-button-container"
@@ -15,8 +23,13 @@
         onwheel={handleWheel}
     >
         {#each social as button}
-            <a href={button.url} target="_blank">
-                <p>{button.name}</p>
+            <a href={button.url} target="_blank" aria-label={button.name}>
+                {#if button.icon}
+                    <i class={button.icon}></i>
+                    <span class="toast">{button.name}</span>
+                {:else}
+                    <p>{button.name}</p>
+                {/if}
             </a>
         {/each}
     </div>
@@ -72,10 +85,6 @@
         border-color: var(--border-color-active);
     }
 
-    p {
-        margin: 0;
-    }
-
     @media (max-width: 600px) {
         .social-button-container {
             gap: 0.5rem;
@@ -86,4 +95,26 @@
             width: 100%;
         }
     }
-</style> 
+
+    .toast {
+        display: none;
+        position: absolute;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        min-width: 1rem;
+        bottom: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        pointer-events: none;
+        border: var(--button-border-size) solid var(--border-color);
+        border-radius: var(--button-border-radius);
+    }
+
+    a:hover .toast {
+        display: block;
+    }
+</style>
