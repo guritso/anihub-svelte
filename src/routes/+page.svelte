@@ -4,7 +4,7 @@
     import ReposLayout from "$lib/components/repos/ReposLayout.svelte";
     import ErrorLayout from "$lib/components/error/ErrorLayout.svelte";
 
-    import { getConfig } from "$lib/config";
+    import { getConfig } from "$lib/stores/config";
     import { goto } from "$app/navigation";
 
     let config = $state({
