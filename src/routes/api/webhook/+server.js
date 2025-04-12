@@ -1,10 +1,8 @@
-import { _broadcast } from '../stream/+server.js';
-
 export async function POST({ request }) {
     try {
         const body = await request.json();
-        
-        _broadcast(body);
+
+        // TODO: Handle the webhook event
 
         return new Response(JSON.stringify({ message: "OK" }), {
             status: 200,
