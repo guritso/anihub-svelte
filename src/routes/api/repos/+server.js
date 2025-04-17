@@ -1,8 +1,5 @@
 import { json } from "@sveltejs/kit";
 
-const cache = new Map();
-const cacheDuration = 60 * 1000 * 10; // 10 minutes
-
 export async function GET({ url }) {
     const user = url.searchParams.get("user");
 
@@ -11,12 +8,6 @@ export async function GET({ url }) {
     }
 
     try {
-        const cachedData = cache.get(user);
-
-        if (cachedData) {
-            return json(cachedData);
-        }
-
         const response = await fetch(
             `https://api.github.com/users/${user}/repos?sort=updated`,
             {
@@ -31,8 +22,6 @@ export async function GET({ url }) {
         }
 
         const data = await response.json();
-
-        saveToCache(user, reduceJson(data));
 
         return json(reduceJson(data));
     } catch (error) {
@@ -61,12 +50,4 @@ function reduceJson(json) {
             };
         }),
     };
-}
-
-function saveToCache(user, data) {
-    cache.set(user, data);
-
-    setTimeout(() => {
-        cache.delete(user);
-    }, cacheDuration);
 }
