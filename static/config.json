@@ -27,7 +27,6 @@
             "watching",
             "completed"
         ],
-        "cache": true,
         "limit": 20,
         "rowSpeed": 0.6
     },

@@ -1,12 +1,8 @@
 import { json } from "@sveltejs/kit";
 import { URL, URLSearchParams } from "node:url";
 
-const cacheData = new Map();
-const cacheDuration = 60 * 1000 * 5; // 5 minutes
-
 export async function GET({ url, request }) {
     const user = url.searchParams.get("user");
-    const cache = request.headers.get("cache");
 
     if (!user) {
         return json({ error: "User parameter is required" }, { status: 400 });
@@ -22,12 +18,6 @@ export async function GET({ url, request }) {
         `https://myanimelist.net/animelist/${user}/load.json?${params}`
     );
 
-    const cachedData = cacheData.get(user);
-
-    if (cachedData && cache === "true") {
-        return json(cachedData);
-    }
-
     try {
         const response = await fetch(malUrl, {
             headers: {
@@ -41,8 +31,6 @@ export async function GET({ url, request }) {
 
         const data = await response.json();
         const reducedJson = reduceJson(data);
-
-        saveToCache(user, reducedJson);
 
         return json(reducedJson);
     } catch (error) {
@@ -105,10 +93,3 @@ function getDate(date) {
     });
 }
 
-function saveToCache(user, data) {
-    cacheData.set(user, data);
-
-    setTimeout(() => {
-        cacheData.delete(user);
-    }, cacheDuration);
-}
