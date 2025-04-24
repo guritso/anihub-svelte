@@ -6,6 +6,22 @@
         event.preventDefault();
         container.scrollLeft += event.deltaY;
     }
+
+    function handleMove(event, toastElement) {
+        if (!toastElement) return;
+        toastElement.style.left = `${event.clientX + 10}px`;
+        toastElement.style.top = `${event.clientY + 10}px`;
+    }
+
+    function handleEnter(toastElement) {
+        if (!toastElement) return;
+        toastElement.style.opacity = '1';
+    }
+
+    function handleLeave(toastElement) {
+        if (!toastElement) return;
+        toastElement.style.opacity = '0';
+    }
 </script>
 
 <svelte:head>
@@ -23,7 +39,14 @@
         onwheel={handleWheel}
     >
         {#each social as button}
-            <a href={button.url} target="_blank" aria-label={button.name}>
+            <a
+                href={button.url}
+                target="_blank"
+                aria-label={button.name}
+                onmousemove={(event) => handleMove(event, event.currentTarget.querySelector('.toast'))}
+                onmouseenter={(event) => handleEnter(event.currentTarget.querySelector('.toast'))}
+                onmouseleave={(event) => handleLeave(event.currentTarget.querySelector('.toast'))}
+            >
                 {#if button.icon}
                     <i class={button.icon}></i>
                     <span class="toast">{button.name}</span>
@@ -85,6 +108,20 @@
         border-color: var(--border-color-active);
     }
 
+    .toast {
+        position: fixed;
+        background-color: var(--background-color);
+        border: var(--button-border-size) solid var(--border-color);
+        border-radius: var(--button-border-radius);
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        z-index: 1000;
+    }
+
     @media (max-width: 600px) {
         .social-button-container {
             gap: 0.5rem;
@@ -94,27 +131,5 @@
             flex-direction: row;
             width: 100%;
         }
-    }
-
-    .toast {
-        display: none;
-        position: absolute;
-        background-color: var(--background-color);
-        color: var(--text-color);
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-        min-width: 1rem;
-        bottom: 80%;
-        left: 50%;
-        transform: translateX(-50%);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        pointer-events: none;
-        border: var(--button-border-size) solid var(--border-color);
-        border-radius: var(--button-border-radius);
-    }
-
-    a:hover .toast {
-        display: block;
     }
 </style>
