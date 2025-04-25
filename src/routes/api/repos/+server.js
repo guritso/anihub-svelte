@@ -1,5 +1,5 @@
 import { json } from "@sveltejs/kit";
-import { GITHUB_TOKEN } from "$env/static/private";
+import { env } from '$env/dynamic/private';
 
 export async function GET({ url }) {
     const user = url.searchParams.get("user");
@@ -10,7 +10,7 @@ export async function GET({ url }) {
 
     const headers = new Headers({
         "User-Agent": "anihub-svelte-app",
-        ...(GITHUB_TOKEN && { Authorization: `Bearer ${GITHUB_TOKEN}` })
+        ...(env.GITHUB_TOKEN && { Authorization: `Bearer ${env.GITHUB_TOKEN}` })
     });
 
     try {
