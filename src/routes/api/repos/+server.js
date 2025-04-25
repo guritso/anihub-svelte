@@ -1,4 +1,5 @@
 import { json } from "@sveltejs/kit";
+import { GITHUB_TOKEN } from "$env/static/private";
 
 export async function GET({ url }) {
     const user = url.searchParams.get("user");
@@ -7,14 +8,15 @@ export async function GET({ url }) {
         return json({ error: "User parameter is required" }, { status: 400 });
     }
 
+    const headers = new Headers({
+        "User-Agent": "anihub-svelte-app",
+        ...(GITHUB_TOKEN && { Authorization: `Bearer ${GITHUB_TOKEN}` })
+    });
+
     try {
         const response = await fetch(
             `https://api.github.com/users/${user}/repos?sort=updated`,
-            {
-                headers: {
-                    "User-Agent": "anihub-svelte-app",
-                },
-            }
+            { headers }
         );
 
         if (!response.ok) {
