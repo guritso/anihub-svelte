@@ -29,7 +29,7 @@ A SvelteKit web page that integrates your MyAnimeList entries with your GitHub r
 
 ## Configuration
 
-The application is configured through `static/config.json`. Configurable options include:
+The application is configured through `src/config.yaml`. Configurable options include:
 - Profile information
 - Social media links
 - MyAnimeList username
@@ -45,7 +45,7 @@ pnpm install
 ```
 
 2. Configure the application:
-- Update `static/config.json` with your information
+- Update `src/config.yaml` with your information
 
 3. Start development server:
 ```bash
