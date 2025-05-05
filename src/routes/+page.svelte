@@ -8,6 +8,7 @@
 <svelte:head>
     <title>{config.user.name}</title>
     <meta name="description" content={config.user.bio} />
+    <meta property="og:image" content={config.user.avatar} />
 </svelte:head>
 
 <div class="main-layout">
