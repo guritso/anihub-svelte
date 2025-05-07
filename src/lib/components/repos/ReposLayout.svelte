@@ -1,9 +1,9 @@
 <script>
     import Card from "./Card.svelte";
+    import Loading from "$lib/components/shared/Loading.svelte";
 
     let { config } = $props();
     let repos = $state([]);
-    let status = $state("loading...");
 
     $effect(async () => {
         const { exclude, forks, archiveds, limit } = config.repos;
@@ -12,11 +12,6 @@
 
         const res = await fetch(`/api/repos?user=${config.user.github}`);
         const data = await res.json();
-
-        if (data.error) {
-            status = data.error;
-            return;
-        }
 
         repos = data.repos
             .filter((repo) => !exclude.includes(repo.name))
@@ -27,18 +22,12 @@
             })
             .slice(0, limit);
     });
-
-    setTimeout(() => {
-        if (repos.length === 0 && status === "loading...") {
-            status = "No repos found";
-        }
-    }, 10000);
 </script>
 
 <div class="repos-layout">
     {#if repos.length === 0}
         <div class="repos-loading">
-            <p>{status}</p>
+            <Loading size="2rem" />
         </div>
     {:else}
         <div class="repos-container">
@@ -74,8 +63,10 @@
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
     }
 
     @media (max-width: 600px) {

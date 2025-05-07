@@ -1,9 +1,9 @@
 <script>
     import Card from "./Card.svelte";
+    import Loading from "$lib/components/shared/Loading.svelte";
 
     let { config } = $props();
     let animes = $state([]);
-    let status = $state("loading...");
 
     let rowSpeed = $derived(
         animes.length > 3 ? animes.length / config.anime.rowSpeed : 0
@@ -13,13 +13,7 @@
         if (!config.user?.myAnimeList) return;
 
         const res = await fetch(`/api/animes?user=${config.user.myAnimeList}`);
-
         const data = await res.json();
-
-        if (data.error) {
-            status = data.error;
-            return;
-        }
 
         const filter = config.anime.filter;
 
@@ -31,18 +25,12 @@
             animes = [...animes, ...animes];
         }
     });
-
-    setTimeout(() => {
-        if (animes.length === 0 && status === "loading...") {
-            status = "No animes found";
-        }
-    }, 10000);
 </script>
 
 <div class="animes-layout">
     {#if animes.length === 0}
         <div class="animes-loading">
-            <p>{status}</p>
+            <Loading size="2rem" />
         </div>
     {:else}
         <div class="animes-container" style={`--row-speed: ${rowSpeed}s`}>
@@ -85,8 +73,10 @@
         width: 100%;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 0.5rem;
     }
 
     @keyframes scroll {
