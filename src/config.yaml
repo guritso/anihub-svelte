@@ -9,9 +9,11 @@ social:
   - name: X
     url: https://x.com/guritso
     icon: fa-brands fa-x-twitter
+
   - name: GitHub
     url: https://github.com/Guritso
     icon: fa-brands fa-github
+
   - name: MyAnimeList
     url: https://myanimelist.net/profile/Guritso
 
