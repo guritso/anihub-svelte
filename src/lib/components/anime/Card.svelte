@@ -193,5 +193,9 @@
             -webkit-line-clamp: 1;
             line-clamp: 1;
         }
+
+        .anime-card-info {
+            height: 100%;
+        }
     }
 </style>
