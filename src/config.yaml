@@ -6,6 +6,10 @@ user:
   github: guritso
 
 social:
+  - name: Buy me a coffee
+    url: https://buymeacoffee.com/guritso
+    icon: fa-solid fa-mug-hot
+
   - name: X
     url: https://x.com/guritso
     icon: fa-brands fa-x-twitter
