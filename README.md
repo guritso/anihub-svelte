@@ -66,6 +66,13 @@ To preview the build:
 pnpm preview
 ```
 
+## Environment Variables
+
+Optional environment variables:
+
+- `GITHUB_TOKEN`: Your GitHub token for more requests
+
+
 ## License
 
 MIT License
