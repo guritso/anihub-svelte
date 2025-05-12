@@ -31,7 +31,6 @@ anime:
 repos:
   exclude:
     - guritso
-    - gurizenit-site
   forks: false
   archiveds: false
   limit: 10
