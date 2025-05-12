@@ -12,7 +12,6 @@
     .action-buttons-container {
         display: flex;
         gap: 0.5rem;
-        width: 35px;
     }
 
     @media (max-width: 600px) {
