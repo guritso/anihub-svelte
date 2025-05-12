@@ -1,13 +1,8 @@
 import { json } from "@sveltejs/kit";
-import { env } from '$env/dynamic/private';
+import { env } from "$env/dynamic/private";
+import { user } from "../../../config.yaml";
 
-export async function GET({ url }) {
-    const user = url.searchParams.get("user");
-
-    if (!user) {
-        return json({ error: "User parameter is required" }, { status: 400 });
-    }
-
+export async function GET() {
     const headers = new Headers({
         "User-Agent": "anihub-svelte-app",
         ...(env.GITHUB_TOKEN && { Authorization: `Bearer ${env.GITHUB_TOKEN}` })
@@ -15,7 +10,7 @@ export async function GET({ url }) {
 
     try {
         const response = await fetch(
-            `https://api.github.com/users/${user}/repos?sort=updated`,
+            `https://api.github.com/users/${user.github}/repos?sort=updated`,
             { headers }
         );
 

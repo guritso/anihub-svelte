@@ -10,7 +10,7 @@
 
         if (!config.user?.github) return;
 
-        const res = await fetch(`/api/repos?user=${config.user.github}`);
+        const res = await fetch(`/api/repos`);
         const data = await res.json();
 
         repos = data.repos

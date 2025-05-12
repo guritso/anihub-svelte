@@ -12,7 +12,7 @@
     $effect(async () => {
         if (!config.user?.myAnimeList) return;
 
-        const res = await fetch(`/api/animes?user=${config.user.myAnimeList}`);
+        const res = await fetch(`/api/animes`);
         const data = await res.json();
 
         const filter = config.anime.filter;

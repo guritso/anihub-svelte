@@ -1,13 +1,8 @@
 import { json } from "@sveltejs/kit";
 import { URL, URLSearchParams } from "node:url";
+import { user } from "../../../config.yaml";
 
-export async function GET({ url, request }) {
-    const user = url.searchParams.get("user");
-
-    if (!user) {
-        return json({ error: "User parameter is required" }, { status: 400 });
-    }
-
+export async function GET() {
     const params = new URLSearchParams({
         offset: 0,
         order: 5,
@@ -15,7 +10,7 @@ export async function GET({ url, request }) {
     });
 
     const malUrl = new URL(
-        `https://myanimelist.net/animelist/${user}/load.json?${params}`
+        `https://myanimelist.net/animelist/${user.myAnimeList}/load.json?${params}`
     );
 
     try {
