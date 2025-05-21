@@ -1,5 +1,5 @@
 <script>
-    import SocialButtons from "./SocialButtons.svelte";
+    import SocialButtons from "../ui/SocialButtons.svelte";
     import ActionButtons from "./ActionButtons.svelte";
 
     let { config } = $props();

@@ -1,6 +1,6 @@
 <script>
     import Card from "./Card.svelte";
-    import Loading from "$lib/components/shared/Loading.svelte";
+    import Loading from "$lib/components/ui/Loading.svelte";
 
     let { config } = $props();
     let animes = $state([]);
