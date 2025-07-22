@@ -70,3 +70,49 @@ a {
 [class*="card"] {
     transition: border-color 0.3s ease;
 }
+
+/* VHS EFFECT */
+.vhs-effect {
+    /* Subtle RGB split */
+    filter: contrast(1) brightness(1) saturate(1);
+    position: relative;
+}
+.vhs-effect::before {
+    content: '';
+    pointer-events: none;
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    z-index: 9999;
+    opacity: 0.18;
+    background: repeating-linear-gradient(
+        to bottom,
+        #fff 0px,
+        #fff 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    mix-blend-mode: overlay;
+}
+.vhs-effect::after {
+    content: '';
+    pointer-events: none;
+    position: fixed;
+    left: 0; top: 0; width: 100vw; height: 100vh;
+    z-index: 10000;
+    opacity: 0.13;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff0000 1px,
+        #00ff00 1px,
+        #0000ff 1px,
+        transparent 2px,
+        transparent 6px
+    );
+    mix-blend-mode: lighten;
+    animation: vhs-rgb 1.7s infinite linear;
+}
+@keyframes vhs-rgb {
+    0% { opacity: 0.13; }
+    50% { opacity: 0.21; }
+    100% { opacity: 0.13; }
+}
