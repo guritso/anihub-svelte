@@ -92,6 +92,9 @@ a {
         transparent 4px
     );
     mix-blend-mode: overlay;
+    box-shadow:
+        0 0 80px 30px #000 inset,
+        0 0 0 8px #000 inset;
 }
 .vhs-effect::after {
     content: '';
@@ -110,6 +113,7 @@ a {
     );
     mix-blend-mode: lighten;
     animation: vhs-rgb 1.7s infinite linear;
+    pointer-events: none;
 }
 @keyframes vhs-rgb {
     0% { opacity: 0.13; }

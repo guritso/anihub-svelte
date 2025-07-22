@@ -2,12 +2,12 @@
     import Theme from "./buttons/Theme.svelte";
     import VHS from "./buttons/VHS.svelte";
 
-    let { theme } = $props();
+    let { config } = $props();
 </script>
 
 <div class="action-buttons-container">
-    <Theme {theme} />
-    <VHS />
+    <Theme theme={config.theme} />
+    <VHS vhs={config.vhs} />
 </div>
 
 <style>

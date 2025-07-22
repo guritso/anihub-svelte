@@ -1,18 +1,21 @@
 <script>
     import vhsSvg from "$lib/assets/vhs.svg?raw";
 
-    let vhs = $state(false);
+    let { vhs } = $props();
+    let vhsState = $derived(vhs ?? false);
 
     $effect(() => {
         const saved = localStorage.getItem("vhs");
-        if (saved !== null) vhs = saved === "true";
-        toggleVHSClass(vhs);
+        if (saved !== null) {
+            vhsState = saved === "true";
+        }
+        toggleVHSClass(vhsState);
     });
 
     function toggleVHS() {
-        vhs = !vhs;
-        toggleVHSClass(vhs);
-        localStorage.setItem("vhs", vhs);
+        vhsState = !vhsState;
+        toggleVHSClass(vhsState);
+        localStorage.setItem("vhs", vhsState);
     }
 
     function toggleVHSClass(enable) {

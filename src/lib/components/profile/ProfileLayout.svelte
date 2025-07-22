@@ -19,7 +19,7 @@
         </div>
         <SocialButtons social={config.social} />
     </div>
-    <ActionButtons theme={config.theme} />
+    <ActionButtons config= {config} />
 </div>
 
 <style>
