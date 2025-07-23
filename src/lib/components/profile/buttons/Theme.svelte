@@ -46,6 +46,7 @@
 </script>
 
 <button
+    title="Theme"
     type="button"
     aria-label="Toggle theme"
     class="theme-button"

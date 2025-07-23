@@ -28,8 +28,9 @@
 </script>
 
 <button
+    title="VHS"
     type="button"
-    aria-label="Toggle VHS effect"
+    aria-label="VHS"
     class="vhs-button"
     onclick={toggleVHS}
 >
