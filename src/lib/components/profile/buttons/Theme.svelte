@@ -72,6 +72,16 @@
         padding: 0;
         margin: 0;
         color: var(--color-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+        button {
+            width: 32px;
+            height: 32px;
+        }
     }
 
     button:hover {

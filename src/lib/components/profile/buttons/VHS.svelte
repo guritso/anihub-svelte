@@ -52,6 +52,12 @@
         justify-content: center;
         transition: transform 0.2s ease;
     }
+    @media (max-width: 600px) {
+        .vhs-button {
+            width: 32px;
+            height: 32px;
+        }
+    }
     .vhs-button:hover {
         transform: scale(1.1);
     }
