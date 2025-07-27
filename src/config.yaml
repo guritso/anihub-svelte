@@ -36,4 +36,4 @@ repos:
   limit: 10
 
 theme: dark
-vhs: true
+vhs: false
