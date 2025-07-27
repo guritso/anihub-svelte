@@ -44,6 +44,7 @@
         object-fit: cover;
         object-position: center;
         user-select: none;
+        aspect-ratio: 1/1;
     }
 
     .profile-info {
