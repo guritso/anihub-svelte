@@ -1,7 +1,7 @@
 user:
   name: Guritso
   bio: Anime fan sharing my latest watches and open-source projects.  
-  avatar: https://s.gravatar.com/avatar/a2087d7427bd15a4986b8a02f12d2590c87e7f6fcf22de02489c305f98217b43?s=150
+  avatar: https://avatares-nine.vercel.app/api/avatar
   myAnimeList: guritso
   github: guritso
 
