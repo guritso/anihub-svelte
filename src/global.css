@@ -116,7 +116,7 @@ a {
     pointer-events: none;
 }
 @keyframes vhs-rgb {
-    0% { opacity: 0.23; }
-    50% { opacity: 0.31; }
-    100% { opacity: 0.23; }
+    0% { opacity: 0.13; }
+    50% { opacity: 0.21; }
+    100% { opacity: 0.13; }
 }
