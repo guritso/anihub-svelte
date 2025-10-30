@@ -3,6 +3,9 @@
     let progressPercentage = $derived(
         anime.episodes > 0 ? (anime.user.episodes / anime.episodes) * 100 : 0
     );
+    let isCompleted = $derived(
+        anime.user.status === "completed" || progressPercentage >= 100
+    );
 
     const statusColor = (status) => {
         switch (status) {
@@ -47,7 +50,11 @@
             <div class="progress-bar">
                 <div
                     class="progress"
-                    style={`width: ${progressPercentage}%`}
+                    style={`width: ${progressPercentage}%; background-color: ${
+                        isCompleted
+                            ? "var(--completed-color)"
+                            : "var(--count-fire-color)"
+                    }`}
                 ></div>
             </div>
             <p class="anime-card-info-item">
