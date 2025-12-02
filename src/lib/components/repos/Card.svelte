@@ -49,7 +49,7 @@
         <div class="repo-card-bottom">
             <div class="repo-card-bottom-left">
                 {#if repo.homepage}
-                    <div onclick={() => openWebsite(repo.homepage)} class="repo-website-button" aria-label="Visit website">
+                    <div onclick={() => openWebsite(repo.homepage)} onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { openWebsite(repo.homepage); e.preventDefault(); } }} class="repo-website-button" role="button" tabindex="0" aria-label="Visit website">
                         {@html linkSvg}
                     </div>
                 {/if}
