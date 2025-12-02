@@ -39,6 +39,7 @@ function reduceJson(json) {
                 name: repo.name,
                 description: repo.description,
                 url: repo.html_url,
+                homepage: repo.homepage,
                 updated: repo.updated_at,
                 language: repo.language,
                 stars: repo.stargazers_count,

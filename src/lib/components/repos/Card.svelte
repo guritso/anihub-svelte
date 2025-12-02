@@ -1,6 +1,7 @@
 <script>
     import githubSvg from "$lib/assets/github.svg?raw";
     import fireSvg from "$lib/assets/fire.svg?raw";
+    import linkSvg from "$lib/assets/link.svg?raw";
 
     let { repo } = $props();
 
@@ -18,6 +19,10 @@
         const diffDays = (now - updated) / (1000 * 60 * 60 * 24);
         return diffDays < 7;
     }
+
+    function openWebsite(url) {
+        window.open(url, '_blank');
+    }
 </script>
 
 <a
@@ -25,7 +30,7 @@
     target="_blank"
     class="repo-card"
     aria-label={`Repository ${repo.name}`}
->
+ >
     <div class="repo-card-info">
         <div>
             <div class="repo-card-title-container">
@@ -42,9 +47,16 @@
             </p>
         </div>
         <div class="repo-card-bottom">
-            <p class="repo-card-info-item">
-                ★ <span>{repo.stars || 0}</span>
-            </p>
+            <div class="repo-card-bottom-left">
+                {#if repo.homepage}
+                    <div onclick={() => openWebsite(repo.homepage)} class="repo-website-button" aria-label="Visit website">
+                        {@html linkSvg}
+                    </div>
+                {/if}
+                <p class="repo-card-info-item">
+                    ★ <span>{repo.stars || 0}</span>
+                </p>
+            </div>
             <p class="repo-card-info-item-updated">
                 {#if isRecentlyUpdated(repo.updated)}
                     <span class="recently-updated">
@@ -132,6 +144,25 @@
         justify-content: space-between;
         align-items: flex-end;
         flex-direction: row;
+    }
+
+    .repo-card-bottom-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .repo-website-button {
+        font-size: 1rem;
+        color: var(--text-color);
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .repo-website-button:hover {
+        color: var(--text-color-highlight);
     }
 
     .repo-card-info-item-updated {
