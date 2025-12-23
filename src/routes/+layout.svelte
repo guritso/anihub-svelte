@@ -1,10 +1,12 @@
 <script>
     import "@fontsource-variable/m-plus-1-code";
     import "../global.css";
+    import Canvas from "../lib/components/ui/Canvas.svelte";
 
     let { children } = $props();
 </script>
 
+<Canvas />
 <main class="layout-container">
     {@render children()}
 </main>
