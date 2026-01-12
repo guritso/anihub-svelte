@@ -1,6 +1,6 @@
 <script>
-    import Theme from "./buttons/Theme.svelte";
-    import VHS from "./buttons/VHS.svelte";
+    import Theme from "$lib/components/ui/buttons/Theme.svelte";
+    import VHS from "$lib/components/ui/buttons/VHS.svelte";
 
     let { config } = $props();
 </script>
