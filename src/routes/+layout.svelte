@@ -1,7 +1,11 @@
 <script>
+    import { dev } from "$app/environment";
+    import { injectAnalytics } from "@vercel/analytics/sveltekit";
     import "@fontsource-variable/m-plus-1-code";
     import "../global.css";
     import Canvas from "../lib/components/ui/Canvas.svelte";
+
+    injectAnalytics({ mode: dev ? "development" : "production" });
 
     let { children } = $props();
 </script>

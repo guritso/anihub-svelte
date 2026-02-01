@@ -18,7 +18,8 @@
         "vite": "^6.4.1"
     },
     "dependencies": {
-        "@fontsource-variable/m-plus-1-code": "^5.2.9"
+        "@fontsource-variable/m-plus-1-code": "^5.2.9",
+        "@vercel/analytics": "^1.6.1"
     },
     "author": "Guritso",
     "license": "MIT",
