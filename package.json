@@ -15,7 +15,7 @@
         "@sveltejs/kit": "^2.69.1",
         "@sveltejs/vite-plugin-svelte": "^5.1.1",
         "svelte": "^5.53.5",
-        "vite": "^6.4.2"
+        "vite": "^6.4.5"
     },
     "dependencies": {
         "@fontsource-variable/m-plus-1-code": "^5.2.9"
